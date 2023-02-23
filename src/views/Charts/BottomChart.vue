@@ -89,17 +89,19 @@ onMounted(() => {
     <div class="bc-chart-item">
       <div class="bcci-header">赵钱收费站</div>
       <div id="lc6-chart"></div>
-      <Divide />
+      <Divide position="right" />
     </div>
 
     <div class="bc-chart-item">
       <div class="bcci-header">孙李收费站</div>
       <div id="lc7-chart"></div>
+      <Divide position="right" />
     </div>
 
     <div class="bc-chart-item">
       <div class="bcci-header">周吴收费站</div>
       <div id="lc8-chart"></div>
+      <Divide position="right" />
     </div>
 
     <div class="bc-chart-item">

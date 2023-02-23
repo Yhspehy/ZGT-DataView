@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
+import { debounce } from '@/utils/index'
+
 import BorderBox1 from '@/components/BorderBox/BorderBox1.vue'
 import BorderBox2 from '@/components/BorderBox/BorderBox2.vue'
 
@@ -12,17 +15,51 @@ import RightChart1 from './Charts/RightChart1.vue'
 import RightChart2 from './Charts/RightChart2.vue'
 
 import BottomChart from './Charts/BottomChart.vue'
+
+const containerRef = ref<HTMLInputElement | null>(null)
+const screenWidth = ref(document.body.clientWidth)
+const screenHeight = ref(document.body.clientHeight)
+document.documentElement.style.fontSize = screenWidth.value / 100 + 'px'
+
+let isInit = false
+
+function onResize() {
+  const currentWidth = document.body.clientWidth
+  const currentHeight = document.body.clientHeight
+
+  if (containerRef.value) {
+    if (!isInit) {
+      isInit = true
+    }
+    containerRef.value.style.transform = `scale(${Math.min(
+      currentWidth / screenWidth.value,
+      currentHeight / screenHeight.value
+    )})`
+  }
+}
+
+const debounceOnResize = debounce(100, onResize)
+
+onMounted(() => {
+  onResize()
+  window.addEventListener('resize', debounceOnResize)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', debounceOnResize)
+})
 </script>
 
 <template>
-  <div id="data-view">
-    <div class="main-header">
-      <div class="mh-left">技术支持</div>
-      <div class="mh-middle">机电设备电子档案</div>
-      <div class="mh-right">
-        <div>综合管理台</div>
-      </div>
-    </div>
+  <div
+    id="data-view"
+    :style="{
+      width: screenWidth + 'px',
+      height: screenHeight + 'px'
+    }"
+    ref="containerRef"
+  >
+    <div class="main-header">义乌铁路西站场区作业情况展示</div>
 
     <div class="main-container">
       <border-box-1>
@@ -66,39 +103,19 @@ import BottomChart from './Charts/BottomChart.vue'
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
+@use '../styles/mixin.scss' as *;
+
 #data-view {
-  width: 100vw;
-  height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  #dv-full-screen-container {
-    background-image: url('./img/bg.png');
-    background-size: 100% 100%;
-    box-shadow: 0 0 3px blue;
-    display: flex;
-    flex-direction: column;
-  }
+  transform-origin: left top;
+
   .main-header {
+    @include flex-center;
     height: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    .mh-left {
-      font-size: 20px;
-      color: rgb(1, 134, 187);
-      a:visited {
-        color: rgb(1, 134, 187);
-      }
-    }
-    .mh-middle {
-      font-size: 30px;
-    }
-    .mh-left,
-    .mh-right {
-      width: 450px;
-    }
+    font-size: 30px;
   }
   .main-container {
     width: 100%;
