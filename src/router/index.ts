@@ -7,6 +7,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: () => import('../views/YiWu/index.vue')
+    },
+    {
+      path: '/demo',
+      name: 'demo',
+      component: () => import('../views/Demo/index.vue')
     }
   ]
 })

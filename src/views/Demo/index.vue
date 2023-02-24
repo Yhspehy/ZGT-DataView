@@ -104,7 +104,7 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss" scoped>
-@use '../styles/mixin.scss' as *;
+@use '../../styles/mixin.scss' as *;
 
 #data-view {
   overflow: hidden;

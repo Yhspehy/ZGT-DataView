@@ -3,6 +3,8 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { debounce } from '@/utils/index'
 
 import BorderBox1 from '@/components/BorderBox/BorderBox1.vue'
+import BorderBox3 from '@/components/BorderBox/BorderBox3.vue'
+
 import ScrollTable from '@/components/ScrollTable.vue'
 
 import LeftBarChart from './Charts/LeftBar.vue'
@@ -39,6 +41,8 @@ const table2Data = ref(
     ])
 )
 
+// 是否已经初始化
+// 在初始化的时候设置容器宽高
 let isInit = false
 
 function onResize() {
@@ -62,6 +66,7 @@ onMounted(() => {
   onResize()
   window.addEventListener('resize', debounceOnResize)
 
+  // 测试修改数据后的动画效果
   // setInterval(() => {
   //   table1Data.value = new Array(3)
   //     .fill(1)
@@ -76,7 +81,7 @@ onUnmounted(() => {
 
 <template>
   <div
-    id="data-view"
+    class="YiWu-view"
     :style="{
       width: screenWidth + 'px',
       height: screenHeight + 'px'
@@ -89,7 +94,7 @@ onUnmounted(() => {
       <border-box-1>
         <div class="container-content">
           <div class="left-part">
-            <div class="box">
+            <border-box-3 class="box">
               <div class="box-title">堆区在场箱数量</div>
               <div class="box-item-wrap">
                 <div class="box-item">
@@ -109,17 +114,11 @@ onUnmounted(() => {
                   <div class="box-item-title">含转关箱</div>
                 </div>
               </div>
-
-              <div class="box-footer"></div>
-            </div>
+            </border-box-3>
 
             <div></div>
 
             <left-bar-chart-2 />
-
-            <!-- <div>堆区分布</div>
-            <div>B箱区:320</div>
-            <div>Q箱区:570</div> -->
 
             <left-bar-chart />
           </div>
@@ -181,13 +180,14 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 @use '../../styles/mixin.scss' as *;
+@use '../../styles/border.scss' as *;
 
 @font-face {
   font-family: electronicFont;
-  src: url(./DS-DIGIT.TTF);
+  src: url(../../fonts/DS-DIGIT.TTF);
 }
 
-#data-view {
+.YiWu-view {
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -211,7 +211,6 @@ onUnmounted(() => {
 
       .left-part {
         @include flex-column;
-
         width: 20%;
         height: 100%;
 
@@ -247,43 +246,6 @@ onUnmounted(() => {
             }
           }
         }
-
-        .box-footer {
-          position: absolute;
-          bottom: 0;
-          width: 100%;
-          left: 0;
-        }
-
-        .box:before,
-        .box:after {
-          content: '';
-          position: absolute;
-          width: 10px;
-          height: 10px;
-          border-top: 2px solid #02a6b5;
-          top: 0;
-        }
-
-        .box-footer:before,
-        .box-footer:after {
-          content: '';
-          position: absolute;
-          width: 10px;
-          height: 10px;
-          border-bottom: 2px solid #02a6b5;
-          bottom: 0;
-        }
-        .box:before,
-        .box-footer:before {
-          border-left: 2px solid #02a6b5;
-          left: 0;
-        }
-        .box:after,
-        .box-footer:after {
-          border-right: 2px solid #02a6b5;
-          right: 0;
-        }
       }
 
       .middle-part {
@@ -292,10 +254,6 @@ onUnmounted(() => {
         margin-left: 10px;
         padding-left: 5px;
         box-sizing: border-box;
-
-        .middle-header {
-          @include flex-space-between;
-        }
 
         .bar {
           padding: 0 12px 12px;
@@ -308,35 +266,12 @@ onUnmounted(() => {
           }
 
           .barbox-value {
+            @include border-1;
             @include flex-space-around;
-            position: relative;
             font-size: 50px;
             color: #ffeb7b;
             font-family: electronicFont;
             font-weight: bold;
-            border: 1px solid rgba(25, 186, 139, 0.17);
-
-            &:before,
-            &:after {
-              position: absolute;
-              width: 24px;
-              height: 8px;
-              content: '';
-            }
-
-            &:before {
-              border-left: 2px solid #02a6b5;
-              left: 0;
-              top: 0;
-              border-top: 2px solid #02a6b5;
-            }
-
-            &:after {
-              border-right: 2px solid #02a6b5;
-              right: 0;
-              bottom: 0;
-              border-bottom: 2px solid #02a6b5;
-            }
 
             .barbox-item {
               flex: 1;
