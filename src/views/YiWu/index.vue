@@ -1,6 +1,11 @@
+<script lang="ts">
+export default {
+  name: 'YiWu'
+}
+</script>
+
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
-import { debounce } from '@/utils/index'
+import { ref } from 'vue'
 
 import BorderBox1 from '@/components/BorderBox/BorderBox1.vue'
 import BorderBox3 from '@/components/BorderBox/BorderBox3.vue'
@@ -17,13 +22,9 @@ import RightPieChart from './Charts/RightPie.vue'
 import RightTopBarChart from './Charts/RightTopBar.vue'
 import RightBottomBarChart from './Charts/RightBottomBar.vue'
 
-import { bigScreenWidthPx } from './config'
+import { useResize } from '@/hooks/resize'
 
-const containerRef = ref<HTMLInputElement | null>(null)
-const screenWidth = ref(document.body.clientWidth)
-const screenHeight = ref(document.body.clientHeight)
-// 将px转换成rem
-const tableRowHeightRem = (45 / bigScreenWidthPx) * 100
+const { containerRef, screenWidth, screenHeight } = useResize()
 
 const table1Data = ref(
   new Array(10).fill(1).map(() => ['TRAYW 001SI/001NW', '50', '50', '45'])
@@ -42,43 +43,6 @@ const table2Data = ref(
       '150'
     ])
 )
-
-// 是否已经初始化
-// 在初始化的时候设置容器宽高
-let isInit = false
-
-function onResize() {
-  const currentWidth = document.body.clientWidth
-  const currentHeight = document.body.clientHeight
-
-  if (containerRef.value) {
-    if (!isInit) {
-      isInit = true
-    }
-    containerRef.value.style.transform = `scale(${Math.min(
-      currentWidth / screenWidth.value,
-      currentHeight / screenHeight.value
-    )})`
-  }
-}
-
-const debounceOnResize = debounce(100, onResize)
-
-onMounted(() => {
-  onResize()
-  window.addEventListener('resize', debounceOnResize)
-
-  // 测试修改数据后的动画效果
-  // setInterval(() => {
-  //   table1Data.value = new Array(3)
-  //     .fill(1)
-  //     .map(() => ['TRAYW 001SI/001NW', '50', '50', '45'])
-  // }, 5000)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('resize', debounceOnResize)
-})
 </script>
 
 <template>
@@ -95,8 +59,9 @@ onUnmounted(() => {
     <div class="container">
       <border-box-1>
         <div class="container-content">
+          <!-- 左边区域 -->
           <div class="left-part">
-            <border-box-3 class="box">
+            <border-box3 class="box">
               <div class="box-title">堆区在场箱数量</div>
               <div class="box-item-wrap">
                 <div class="box-item">
@@ -124,10 +89,10 @@ onUnmounted(() => {
                   <div class="box-item-title">含转关箱</div>
                 </div>
               </div>
-            </border-box-3>
+            </border-box3>
 
             <div class="left-bar-chart-2">
-              <left-bar-chart-2 />
+              <left-bar-chart2 />
               <divide position="top" />
             </div>
 
@@ -137,6 +102,7 @@ onUnmounted(() => {
             </div>
           </div>
 
+          <!-- 中间区域 -->
           <div class="middle-part">
             <div class="bar">
               <div class="bar-title">本年度</div>
@@ -145,7 +111,7 @@ onUnmounted(() => {
                   <count-up :end-val="15000" />
                 </div>
                 <div class="barbox-item">
-                  <count-up :end-val="50000" />
+                  <count-up :end-val="50000" :duration="3.5" />
                 </div>
               </div>
               <div class="barbox-title">
@@ -162,11 +128,12 @@ onUnmounted(() => {
               :header="['车名车次', '计划卸量', '计划装量', '已放行待装']"
               :data="table1Data"
               :showIdx="true"
-              :row-height="tableRowHeightRem"
             />
 
             <line-chart />
           </div>
+
+          <!-- 右边区域 -->
           <div class="right-part">
             <div class="right-header">
               <right-pie-chart />
@@ -186,7 +153,7 @@ onUnmounted(() => {
                 '待发箱量'
               ]"
               :data="table2Data"
-              :row-height="tableRowHeightRem"
+              :row-num="6"
             />
             <right-bottom-bar-chart />
           </div>
@@ -210,11 +177,13 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   transform-origin: left top;
+  color: #fff;
 
   .header {
     @include flex-center;
     height: 80px;
-    font-size: 30px;
+    font-size: 40px;
+    font-weight: bold;
   }
   .container {
     width: 100%;
@@ -239,7 +208,6 @@ onUnmounted(() => {
 
           .box-title {
             font-size: 16px;
-            color: #fff;
             font-weight: bold;
           }
 
@@ -279,8 +247,8 @@ onUnmounted(() => {
 
       .middle-part {
         @include flex-column;
-        width: 35%;
-        margin-left: 10px;
+        width: 33%;
+        margin: 0 1%;
         padding-left: 5px;
         box-sizing: border-box;
 
@@ -338,14 +306,14 @@ onUnmounted(() => {
         .right-header {
           @include flex-start-center;
           height: 30%;
-          padding-left: 20px;
         }
       }
     }
 
     .table-title {
       text-align: center;
-      font-size: 24px;
+      font-size: 18px;
+      font-weight: bold;
       margin: 10px 0;
     }
   }
