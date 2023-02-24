@@ -22,27 +22,27 @@ withDefaults(defineProps<Props>(), {
   top: 0;
   left: 0;
   width: 100%;
-  height: 2px;
+  height: 1px;
   transform: translateX(-100%);
-  animation: divide-animation-x 4s linear infinite;
+  animation: divide-animation-x 6s linear infinite;
 }
 
 .bottom {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 2px;
+  height: 1px;
   transform: translateX(-100%);
-  animation: divide-animation-x 4s linear infinite;
+  animation: divide-animation-x 6s linear infinite;
 }
 
 .right {
   right: 0;
   top: 0;
   height: 100%;
-  width: 2px;
+  width: 1px;
   transform: translateY(-100%);
-  animation: divide-animation-y 4s linear infinite;
+  animation: divide-animation-y 6s linear infinite;
 }
 
 @keyframes divide-animation-x {

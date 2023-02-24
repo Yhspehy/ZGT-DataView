@@ -6,6 +6,7 @@ import BorderBox1 from '@/components/BorderBox/BorderBox1.vue'
 import BorderBox3 from '@/components/BorderBox/BorderBox3.vue'
 
 import ScrollTable from '@/components/ScrollTable.vue'
+import CountUp from '@/components/CountUp.vue'
 
 import LeftBarChart from './Charts/LeftBar.vue'
 import LeftBarChart2 from './Charts/LeftBar2.vue'
@@ -98,19 +99,27 @@ onUnmounted(() => {
               <div class="box-title">堆区在场箱数量</div>
               <div class="box-item-wrap">
                 <div class="box-item">
-                  <div class="box-item-value">890</div>
+                  <div class="box-item-value">
+                    <count-up :end-val="890" />
+                  </div>
                   <div class="box-item-title">总数量</div>
                 </div>
                 <div class="box-item">
-                  <div class="box-item-value">450</div>
+                  <div class="box-item-value">
+                    <count-up :end-val="450" />
+                  </div>
                   <div class="box-item-title">空箱量</div>
                 </div>
                 <div class="box-item">
-                  <div class="box-item-value">440</div>
+                  <div class="box-item-value">
+                    <count-up :end-val="440" />
+                  </div>
                   <div class="box-item-title">重箱量</div>
                 </div>
                 <div class="box-item">
-                  <div class="box-item-value">330</div>
+                  <div class="box-item-value">
+                    <count-up :end-val="330" />
+                  </div>
                   <div class="box-item-title">含转关箱</div>
                 </div>
               </div>
@@ -127,8 +136,12 @@ onUnmounted(() => {
             <div class="bar">
               <div class="bar-title">本年度</div>
               <div class="barbox-value">
-                <div class="barbox-item">15000</div>
-                <div class="barbox-item">50000</div>
+                <div class="barbox-item">
+                  <count-up :end-val="15000" />
+                </div>
+                <div class="barbox-item">
+                  <count-up :end-val="50000" />
+                </div>
               </div>
               <div class="barbox-title">
                 <div class="barbox-item">进口箱量</div>

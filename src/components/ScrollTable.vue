@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
 
-export interface Props {
+export interface ScrollTableProps {
   header?: string[] // 表头内容
   columnFlex: number[] // 每栏的flex值，默认为1
   data: any[] // 表单数据
@@ -11,7 +11,7 @@ export interface Props {
   duration?: number // 滚动动画间隔，默认为3000
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<ScrollTableProps>(), {
   rowHeight: 3,
   showIdx: false,
   animation: true,
@@ -182,7 +182,7 @@ watch(
 
   .thead {
     @include flex-start-center;
-    background-color: #00baff;
+    background-color: #002c8a;
     position: relative;
     z-index: 99;
 
