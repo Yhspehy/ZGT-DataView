@@ -1,9 +1,15 @@
+<script lang="ts">
+export default {
+  name: 'ScrollTable'
+}
+</script>
+
 <script setup lang="ts">
-export interface Props {
+export interface DivideProps {
   position?: string
 }
 
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<DivideProps>(), {
   position: 'bottom'
 })
 </script>

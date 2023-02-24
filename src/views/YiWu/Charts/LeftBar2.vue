@@ -75,8 +75,12 @@ onMounted(() => {
     },
     series: [
       {
-        data: [120, 500],
+        data: [120, 200],
         type: 'bar',
+        showBackground: true,
+        backgroundStyle: {
+          borderRadius: 25
+        },
         label: {
           show: true,
           position: 'right',

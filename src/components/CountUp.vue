@@ -4,6 +4,7 @@ export default {
   name: 'CountUp'
 }
 </script>
+
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, watch } from 'vue'
 import { CountUp } from 'countup.js'
@@ -38,14 +39,14 @@ const props = withDefaults(defineProps<CountUpProps>(), {
   options: undefined
 })
 const emits = defineEmits<{
-  // countup init complete
   (event: 'init', countup: CountUp): void
-  // count complete
   (event: 'finished'): void
 }>()
 
 let elRef = ref<HTMLElement>()
 let countUp = ref<CountUp>()
+
+// 初始化
 const initCountUp = () => {
   if (!elRef.value) return
   const startVal = Number(props.startVal)
@@ -66,7 +67,7 @@ const initCountUp = () => {
 const startAnim = (cb?: () => void) => {
   countUp.value?.start(cb)
 }
-// endVal change & autoplay: true, restart animate
+
 watch(
   () => props.endVal,
   (value) => {
@@ -75,7 +76,8 @@ watch(
     }
   }
 )
-// loop animation
+
+// 循环
 const finished = ref(false)
 let loopCount = 0
 const loopAnim = () => {
@@ -92,23 +94,9 @@ const loopAnim = () => {
     }
   })
 }
-watch(finished, (flag) => {
-  if (flag) {
-    emits('finished')
-  }
-})
-onMounted(() => {
-  initCountUp()
-  if (props.autoplay) {
-    loopAnim()
-  }
-})
-onUnmounted(() => {
-  cancelAnimationFrame(dalayRafId)
-  countUp.value?.reset()
-})
+
 let dalayRafId: number
-// delay to execute callback function
+// 延迟执行
 const delay = (cb: () => unknown, seconds = 1) => {
   let startTime: number
   function count(timestamp: number) {
@@ -122,6 +110,25 @@ const delay = (cb: () => unknown, seconds = 1) => {
   }
   dalayRafId = requestAnimationFrame(count)
 }
+
+watch(finished, (flag) => {
+  if (flag) {
+    emits('finished')
+  }
+})
+
+onMounted(() => {
+  initCountUp()
+  if (props.autoplay) {
+    loopAnim()
+  }
+})
+
+onUnmounted(() => {
+  cancelAnimationFrame(dalayRafId)
+  countUp.value?.reset()
+})
+
 const restart = () => {
   initCountUp()
   startAnim()
