@@ -103,7 +103,6 @@ onMounted(() => {
 <style lang="scss" scoped>
 #left-bar-chart-2 {
   width: 100%;
-  flex: 1;
-  margin: 30px 0;
+  height: 100%;
 }
 </style>

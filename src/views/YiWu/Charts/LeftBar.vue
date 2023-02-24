@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import Divide from '@/components/Divide.vue'
 import { onMounted } from 'vue'
 
 import * as echarts from 'echarts/core'
@@ -77,23 +76,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="left-bar-chart">
-    <div id="left-bar-chart"></div>
-
-    <Divide position="top" />
-  </div>
+  <div id="left-bar-chart"></div>
 </template>
 
 <style lang="scss" scoped>
-.left-bar-chart {
-  padding-top: 10px;
-  width: 100%;
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
 #left-bar-chart {
   width: 100%;
   height: 100%;

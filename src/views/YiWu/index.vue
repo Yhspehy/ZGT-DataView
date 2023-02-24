@@ -5,6 +5,7 @@ import { debounce } from '@/utils/index'
 import BorderBox1 from '@/components/BorderBox/BorderBox1.vue'
 import BorderBox3 from '@/components/BorderBox/BorderBox3.vue'
 
+import Divide from '@/components/Divide.vue'
 import ScrollTable from '@/components/ScrollTable.vue'
 import CountUp from '@/components/CountUp.vue'
 
@@ -125,11 +126,15 @@ onUnmounted(() => {
               </div>
             </border-box-3>
 
-            <div></div>
+            <div class="left-bar-chart-2">
+              <left-bar-chart-2 />
+              <divide position="top" />
+            </div>
 
-            <left-bar-chart-2 />
-
-            <left-bar-chart />
+            <div class="left-bar-chart">
+              <left-bar-chart />
+              <divide position="top" />
+            </div>
           </div>
 
           <div class="middle-part">
@@ -258,6 +263,17 @@ onUnmounted(() => {
               }
             }
           }
+        }
+
+        .left-bar-chart {
+          flex: 2;
+          padding-top: 10px;
+        }
+
+        .left-bar-chart-2 {
+          flex: 1;
+          margin: 30px 0;
+          padding-top: 10px;
         }
       }
 
