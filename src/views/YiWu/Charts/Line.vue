@@ -40,6 +40,7 @@ onMounted(() => {
   var option: EChartsOption
 
   option = {
+    backgroundColor: 'transparent',
     title: {
       text: '近日进提箱动态'
     },
@@ -109,6 +110,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 #middle-line-chart {
   width: 100%;
-  height: 30%;
+  margin-top: 1%;
+  flex: 1;
 }
 </style>

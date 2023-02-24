@@ -39,29 +39,37 @@ onMounted(() => {
   var option: EChartsOption
 
   option = {
+    backgroundColor: 'transparent',
     title: {
       text: '历年本站发运量'
     },
-    backgroundColor: 'transparent',
+    legend: {
+      top: '12%'
+    },
     xAxis: {
       type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      axisTick: {
+        show: false
+      }
     },
     yAxis: {
-      type: 'value',
+      axisLine: {
+        show: false
+      },
       splitLine: {
         show: false
       }
-      // axisTick: {
-      //   show: false
-      // }
     },
-    series: [
-      {
-        data: [120, 200, 150, 80, 70, 110, 130],
-        type: 'bar'
-      }
-    ]
+    dataset: {
+      source: [
+        ['product', '转关箱(已审批)', '非转关箱'],
+        ['Matcha', 43.3, 85.8],
+        ['Milk Tea', 83.1, 73.4],
+        ['Cheese', 86.4, 65.2],
+        ['Walnut', 72.4, 53.9]
+      ]
+    },
+    series: [{ type: 'bar' }, { type: 'bar' }]
   }
 
   option && myChart.setOption(option)
@@ -69,46 +77,25 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="left-chart-2">
-    <div class="header">张三收费站</div>
-    <div class="details">设备运行总数<span>435</span></div>
-
+  <div class="left-bar-chart">
     <div id="left-bar-chart"></div>
 
-    <Divide />
+    <Divide position="top" />
   </div>
 </template>
 
 <style lang="scss" scoped>
-.left-chart-2 {
+.left-bar-chart {
+  padding-top: 10px;
   width: 100%;
-  height: 33%;
+  flex: 2;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  .header {
-    height: 20px;
-    line-height: 20px;
-    font-size: 16px;
-    text-indent: 20px;
-    margin-top: 10px;
-  }
-  .details {
-    height: 40px;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    text-indent: 20px;
-    span {
-      color: #096dd9;
-      font-weight: bold;
-      font-size: 35px;
-      margin-left: 20px;
-    }
-  }
-  #left-bar-chart {
-    width: 100%;
-    height: 100%;
-  }
+}
+
+#left-bar-chart {
+  width: 100%;
+  height: 100%;
 }
 </style>

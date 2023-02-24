@@ -18,13 +18,22 @@ withDefaults(defineProps<Props>(), {
   background: #3faacb;
 }
 
+.top {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  transform: translateX(-100%);
+  animation: divide-animation-x 4s linear infinite;
+}
+
 .bottom {
   bottom: 0;
   left: 0;
   width: 100%;
   height: 2px;
   transform: translateX(-100%);
-  animation: divide-animation-bottom 4s linear infinite;
+  animation: divide-animation-x 4s linear infinite;
 }
 
 .right {
@@ -33,10 +42,10 @@ withDefaults(defineProps<Props>(), {
   height: 100%;
   width: 2px;
   transform: translateY(-100%);
-  animation: divide-animation-right 4s linear infinite;
+  animation: divide-animation-y 4s linear infinite;
 }
 
-@keyframes divide-animation-bottom {
+@keyframes divide-animation-x {
   0% {
     transform: translateX(-100%);
   }
@@ -48,7 +57,7 @@ withDefaults(defineProps<Props>(), {
   }
 }
 
-@keyframes divide-animation-right {
+@keyframes divide-animation-y {
   0% {
     transform: translateY(-100%);
   }

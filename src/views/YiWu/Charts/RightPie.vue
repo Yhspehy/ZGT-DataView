@@ -36,6 +36,7 @@ onMounted(() => {
   var option: EChartsOption
 
   option = {
+    backgroundColor: 'transparent',
     title: {
       text: '各家船公司业务占比',
       left: 'center'
@@ -53,13 +54,13 @@ onMounted(() => {
         name: 'Access From',
         type: 'pie',
         radius: '50%',
-        center: ['70%', '50%'],
+        center: ['50%', '50%'],
         data: [
-          { value: 1048, name: 'Search Engine' },
-          { value: 735, name: 'Direct' },
-          { value: 580, name: 'Email' },
-          { value: 484, name: 'Union Ads' },
-          { value: 300, name: 'Video Ads' }
+          { value: 1048, name: '公司1' },
+          { value: 735, name: '公司2' },
+          { value: 580, name: '公司3' },
+          { value: 484, name: '公司4' },
+          { value: 300, name: '公司5' }
         ],
         label: {
           show: false

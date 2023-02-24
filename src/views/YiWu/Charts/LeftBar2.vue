@@ -33,33 +33,61 @@ type EChartsOption = echarts.ComposeOption<
 >
 
 onMounted(() => {
-  var chartDom = document.getElementById('right-bar-chart')!
+  var chartDom = document.getElementById('left-bar-chart-2')!
   var myChart = echarts.init(chartDom, 'dark', { devicePixelRatio: 2 })
   var option: EChartsOption
 
   option = {
-    backgroundColor: 'transparent',
     title: {
-      text: '当月分货代出口重箱数量'
+      text: '堆区分布'
+    },
+    backgroundColor: 'transparent',
+    grid: {
+      top: '20%',
+      left: '15%',
+      right: '10%',
+      bottom: '10%'
     },
     xAxis: {
-      type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
       type: 'value',
       splitLine: {
         show: false
+      },
+      axisTick: {
+        show: false
+      },
+      axisLine: {
+        show: false
+      },
+      axisLabel: {
+        show: false
       }
-
-      // axisTick: {
-      //   show: false
-      // }
+    },
+    yAxis: {
+      type: 'category',
+      data: ['B箱区', 'Q箱区'],
+      axisTick: {
+        show: false
+      },
+      axisLine: {
+        show: false
+      }
     },
     series: [
       {
-        data: [120, 200, 150, 80, 70, 110, 130],
-        type: 'bar'
+        data: [120, 500],
+        type: 'bar',
+        label: {
+          show: true,
+          position: 'right',
+          color: '#4e84a1',
+          fontSize: 14,
+          formatter: '{c}'
+        },
+        itemStyle: {
+          borderRadius: 25,
+          color: '#3facff'
+        }
       }
     ]
   }
@@ -69,12 +97,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="right-bar-chart"></div>
+  <div id="left-bar-chart-2"></div>
 </template>
 
 <style lang="scss" scoped>
-#right-bar-chart {
+#left-bar-chart-2 {
   width: 100%;
-  height: 33%;
+  flex: 1;
+  margin: 30px 0;
 }
 </style>

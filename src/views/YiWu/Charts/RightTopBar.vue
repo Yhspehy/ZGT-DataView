@@ -9,6 +9,8 @@ import {
   type DatasetComponentOption,
   GridComponent,
   type GridComponentOption,
+  LegendComponent,
+  type LegendComponentOption,
   VisualMapComponent,
   type VisualMapComponentOption
 } from 'echarts/components'
@@ -19,6 +21,7 @@ echarts.use([
   TitleComponent,
   DatasetComponent,
   GridComponent,
+  LegendComponent,
   VisualMapComponent,
   BarChart,
   CanvasRenderer
@@ -28,6 +31,7 @@ type EChartsOption = echarts.ComposeOption<
   | TitleComponentOption
   | DatasetComponentOption
   | GridComponentOption
+  | LegendComponentOption
   | VisualMapComponentOption
   | BarSeriesOption
 >
@@ -38,29 +42,25 @@ onMounted(() => {
   var option: EChartsOption
 
   option = {
+    backgroundColor: 'transparent',
     title: {
       text: '预约情况显示'
     },
-    backgroundColor: 'transparent',
-    xAxis: {
-      type: 'value',
-      splitLine: {
-        show: false
-      }
+    legend: {
+      top: '12%'
     },
-    yAxis: {
-      type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-      // axisTick: {
-      //   show: false
-      // }
+    xAxis: { type: 'category' },
+    yAxis: {},
+    dataset: {
+      source: [
+        ['product', '转关箱(已审批)', '非转关箱'],
+        ['Matcha Latte', 43.3, 85.8],
+        ['Milk Tea', 83.1, 73.4],
+        ['Cheese Cocoa', 86.4, 65.2],
+        ['Walnut Brownie', 72.4, 53.9]
+      ]
     },
-    series: [
-      {
-        data: [120, 200, 150, 80, 70, 110, 130],
-        type: 'bar'
-      }
-    ]
+    series: [{ type: 'bar' }, { type: 'bar' }]
   }
 
   option && myChart.setOption(option)
