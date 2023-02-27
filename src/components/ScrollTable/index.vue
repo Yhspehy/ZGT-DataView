@@ -57,7 +57,7 @@ export interface ScrollTableProps {
    */
   rowNum?: number
   /**
-   * 固定的每行高度，写死，px单位
+   * 固定的每行高度，px单位
    * @default 0
    */
   rowHeightFixed?: number
@@ -149,6 +149,28 @@ watch(
   (val) => {
     if (val) {
       animationAction()
+    } else {
+      if (lastIntervalId) {
+        clearInterval(lastIntervalId)
+        lastIntervalId = null
+      }
+    }
+  }
+)
+
+watch(
+  () => props.duration,
+  (val) => {
+    if (val && props.animation) {
+      if (lastIntervalId) {
+        clearInterval(lastIntervalId)
+        lastIntervalId = null
+      }
+      dataTransfer.value = props.data.map((el, idx) => ({
+        data: [...el],
+        idx: idx + 1
+      }))
+      animationAction()
     }
   }
 )
@@ -158,6 +180,8 @@ watch(
   (val) => {
     if (val) {
       calcRowHeight()
+    } else {
+      console.error(`不能将rowNum设置为0`)
     }
   }
 )

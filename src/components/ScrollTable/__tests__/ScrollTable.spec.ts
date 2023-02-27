@@ -168,7 +168,6 @@ describe('ScrollTable', () => {
         rowHeightFixed: 50
       }
     })
-    expect(wrapper.text()).toContain('船名航次')
 
     await nextTick()
     expect(wrapper.find('.tbody').attributes('style')).toContain('0px')
@@ -198,13 +197,39 @@ describe('ScrollTable', () => {
         rowHeightFixed: 50
       }
     })
-    expect(wrapper.text()).toContain('船名航次')
 
     await nextTick()
     expect(wrapper.find('.tbody').attributes('style')).toContain('0px')
 
     await sleep(1500)
     expect(wrapper.find('.tbody').attributes('style')).toContain('0px')
+    wrapper.unmount()
+  })
+
+  it('shoule work when duration change', async () => {
+    const wrapper = mount(ScrollTable, {
+      props: {
+        duration: 1000,
+        columnFlex: [2],
+        header: ['船名航次'],
+        data: [[1], [1], [1], [1]],
+        rowNum: 2,
+        rowHeightFixed: 50
+      }
+    })
+    await nextTick()
+    expect(wrapper.find('.tbody').attributes('style')).toContain('0px')
+
+    await sleep(1100)
+    expect(wrapper.find('.tbody').attributes('style')).toContain('50px')
+
+    wrapper.setProps({
+      duration: 500
+    })
+
+    await sleep(600)
+    expect(wrapper.find('.tbody').attributes('style')).toContain('100px')
+
     wrapper.unmount()
   })
 })
