@@ -23,7 +23,7 @@ export interface CountUpProps {
   autoplay?: boolean
   // 循环次数，有限次数 / 无限循环
   loop?: boolean | number | string
-  // 延时，单位 s
+  // 循环, 延时，单位 s
   delay?: number
   // countup 配置项
   options?: CountUpOptions
