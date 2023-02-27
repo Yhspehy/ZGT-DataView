@@ -11,7 +11,7 @@ import BorderBox1 from '@/components/BorderBox/BorderBox1.vue'
 import BorderBox3 from '@/components/BorderBox/BorderBox3.vue'
 
 import Divide from '@/components/Divide.vue'
-import ScrollTable from '@/components/ScrollTable.vue'
+import ScrollTable from '@/components/ScrollTable/index.vue'
 import CountUp from '@/components/CountUp.vue'
 
 import LeftBarChart from './Charts/LeftBar.vue'

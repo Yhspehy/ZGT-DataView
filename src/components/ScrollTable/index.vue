@@ -10,7 +10,7 @@ import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
 export interface ScrollTableProps {
   data: any[] // 表单数据
   columnFlex: number[] // 每栏的flex值，默认为1
-  header?: string[] // 表头内容
+  header?: string[] | null // 表头内容
   showIdx?: boolean // 是否展示序号，默认是false
   animation?: boolean // 是否滚动，默认是true
   duration?: number // 滚动动画间隔，默认为3000
@@ -18,22 +18,25 @@ export interface ScrollTableProps {
   oddRowBg?: string // 单数行的背景
   evenRowBg?: string // 双数行的背景
   rowNum?: number // 表单可以存放几行,其中包括了header一行
+  rowHeightFixed?: number // 固定的每行高度，写死，px单位
 }
 
 const props = withDefaults(defineProps<ScrollTableProps>(), {
+  header: null,
   showIdx: false,
   animation: true,
   duration: 3000,
   headerBg: '#002c8a',
   oddRowBg: '#0101c32',
   evenRowBg: '#03184b',
-  rowNum: 7
+  rowNum: 7,
+  rowHeightFixed: 0
 })
 
 const scrollTableRef = ref<HTMLInputElement | null>(null)
 const tbodyRef = ref<HTMLInputElement | null>(null)
 // 每一行的高度
-const rowHeight = ref(0)
+const rowHeight = ref(props.rowHeightFixed)
 
 const dataTransfer = ref(
   props.data.map((el, idx) => ({
@@ -45,23 +48,11 @@ const dataTransfer = ref(
 const animationIdx = ref(0)
 let lastIntervalId: number | null = null
 
-onMounted(() => {
-  calcRowHeight()
-  if (props.animation) {
-    animationAction()
-  }
-})
-
-onUnmounted(() => {
-  if (lastIntervalId) {
-    clearInterval(lastIntervalId)
-    lastIntervalId = null
-  }
-})
-
 // 计算每一行的高度
 function calcRowHeight() {
-  rowHeight.value = scrollTableRef.value!.clientHeight / props.rowNum
+  if (!rowHeight.value) {
+    rowHeight.value = scrollTableRef.value!.clientHeight / props.rowNum
+  }
 }
 
 /**
@@ -96,6 +87,20 @@ function stopAnimation() {
 function reStartAnimation() {
   tbodyRef.value!.style.transitionProperty = 'transform'
 }
+
+onMounted(() => {
+  calcRowHeight()
+  if (props.animation) {
+    animationAction()
+  }
+})
+
+onUnmounted(() => {
+  if (lastIntervalId) {
+    clearInterval(lastIntervalId)
+    lastIntervalId = null
+  }
+})
 
 watch(
   () => props.animation,
@@ -145,7 +150,9 @@ watch(
       class="thead"
       :style="{ height: `${rowHeight}px`, backgroundColor: headerBg }"
     >
-      <div v-if="showIdx" class="thead-col" style="flex: 0 0 5rem">序号</div>
+      <div v-if="showIdx" class="thead-col thead-idx" style="flex: 0 0 5rem">
+        序号
+      </div>
       <div
         v-for="(h, hIdx) in header"
         :key="h"
@@ -173,7 +180,7 @@ watch(
           backgroundColor: rowData.idx & 1 ? oddRowBg : evenRowBg
         }"
       >
-        <div v-if="showIdx" class="tbody-col" style="flex: 0 0 5rem">
+        <div v-if="showIdx" class="tbody-col tbody-idx" style="flex: 0 0 5rem">
           {{ rowData.idx }}
         </div>
         <div
