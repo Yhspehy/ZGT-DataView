@@ -42,6 +42,9 @@ onMounted(() => {
     title: {
       text: '当月分货代出口重箱数量'
     },
+    grid: {
+      bottom: '3%'
+    },
     xAxis: {
       type: 'category',
       data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -51,10 +54,6 @@ onMounted(() => {
       splitLine: {
         show: false
       }
-
-      // axisTick: {
-      //   show: false
-      // }
     },
     series: [
       {
@@ -75,6 +74,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 #right-bar-chart {
   width: 100%;
-  height: 33%;
+  height: 32%;
+  margin-top: 1%;
 }
 </style>

@@ -7,10 +7,9 @@ export default {
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import BorderBox1 from '@/components/BorderBox/BorderBox1.vue'
-import BorderBox3 from '@/components/BorderBox/BorderBox3.vue'
+import { BorderBox1, BorderBox3 } from '@/components/BorderBox'
 
-import Divide from '@/components/Divide.vue'
+import Divide from '@/components/Divide/index.vue'
 import ScrollTable from '@/components/ScrollTable/index.vue'
 import CountUp from '@/components/CountUp/index.vue'
 

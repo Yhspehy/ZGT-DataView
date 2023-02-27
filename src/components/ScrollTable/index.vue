@@ -8,17 +8,59 @@ export default {
 import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
 
 export interface ScrollTableProps {
-  data: any[] // 表单数据
-  columnFlex: number[] // 每栏的flex值，默认为1
-  header?: string[] | null // 表头内容
-  showIdx?: boolean // 是否展示序号，默认是false
-  animation?: boolean // 是否滚动，默认是true
-  duration?: number // 滚动动画间隔，默认为3000
-  headerBg?: string // header的背景
-  oddRowBg?: string // 单数行的背景
-  evenRowBg?: string // 双数行的背景
-  rowNum?: number // 表单可以存放几行,其中包括了header一行
-  rowHeightFixed?: number // 固定的每行高度，写死，px单位
+  /**
+   * 表单数据
+   */
+  data: any[]
+  /**
+   * 每栏的flex值
+   * @default 1
+   */
+  columnFlex: number[]
+  /**
+   * 表头内容
+   */
+  header?: string[] | null
+  /**
+   * 是否展示序
+   * @default false
+   */
+  showIdx?: boolean
+  /**
+   * 是否滚动
+   * @default true
+   */
+  animation?: boolean
+  /**
+   * 滚动动画间隔，默认为3000
+   * @default 3000
+   */
+  duration?: number
+  /**
+   * header的背景
+   * @default #002c8a
+   */
+  headerBg?: string
+  /**
+   * 单数行的背景
+   * @default #010c32
+   */
+  oddRowBg?: string
+  /**
+   * 双数行的背景
+   * @default #03184b
+   */
+  evenRowBg?: string
+  /**
+   * 表单可以存放几行,其中包括了header一行
+   * @default 7
+   */
+  rowNum?: number
+  /**
+   * 固定的每行高度，写死，px单位
+   * @default 0
+   */
+  rowHeightFixed?: number
 }
 
 const props = withDefaults(defineProps<ScrollTableProps>(), {
@@ -27,7 +69,7 @@ const props = withDefaults(defineProps<ScrollTableProps>(), {
   animation: true,
   duration: 3000,
   headerBg: '#002c8a',
-  oddRowBg: '#0101c32',
+  oddRowBg: '#010c32',
   evenRowBg: '#03184b',
   rowNum: 7,
   rowHeightFixed: 0
@@ -199,7 +241,7 @@ watch(
 </template>
 
 <style lang="scss" scoped>
-@use '../styles/mixin.scss' as *;
+@use '../../styles/mixin.scss' as *;
 .scroll-table {
   width: 100%;
   height: 100%;

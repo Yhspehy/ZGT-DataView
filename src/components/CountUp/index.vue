@@ -11,21 +11,44 @@ import { CountUp } from 'countup.js'
 import type { CountUpOptions } from 'countup.js'
 
 export interface CountUpProps {
-  // 结束数值
+  /**
+   * 结束数值
+   */
   endVal: number | string
-  // 开始数值
+  /**
+   * 开始数值
+   * @default 0
+   */
   startVal?: number | string
-  // 动画时长，单位 s
+  /**
+   * 动画时长，单位 s
+   * @default 2.5
+   */
   duration?: number | string
-  // 小数点位数
+  /**
+   * 小数点位数
+   * @default 0
+   */
   decimalPlaces?: number
-  // 是否自动计数
+  /**
+   * 是否自动计数
+   * @default true
+   */
   autoplay?: boolean
-  // 循环次数，有限次数 / 无限循环
+  /**
+   * 循环次数，有限次数 / 无限循环
+   * @default false
+   */
   loop?: boolean | number | string
-  // 循环, 延时，单位 s
+  /**
+   * 循环, 延时，单位 s
+   * @default 0
+   */
   delay?: number
-  // countup 配置项
+  /**
+   * countup 配置项
+   * @default undefined
+   */
   options?: CountUpOptions
 }
 
