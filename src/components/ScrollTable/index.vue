@@ -105,7 +105,7 @@ function calcRowHeight() {
 function animationAction() {
   if (props.data.length > props.rowNum) {
     dataTransfer.value = [...dataTransfer.value, ...dataTransfer.value]
-    lastIntervalId = setInterval(() => {
+    lastIntervalId = window.setInterval(() => {
       animationIdx.value++
       if (animationIdx.value === props.data.length) {
         // 在执行完动画后将位置回到0
