@@ -57,7 +57,7 @@ export interface ScrollTableProps {
    */
   rowNum?: number
   /**
-   * 固定的每行高度，px单位
+   * 固定的每行高度，px单位,仅测试用，不暴露为prop
    * @default 0
    */
   rowHeightFixed?: number

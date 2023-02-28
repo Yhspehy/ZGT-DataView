@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Divide from '@/components/Divide.vue'
+import Divide from '@/components/Divide'
 
 import { onMounted } from 'vue'
 import * as echarts from 'echarts/core'
