@@ -87,7 +87,7 @@ export default defineConfig({
 
     nav: [
       { text: 'Guide', link: '/guide/' },
-      { text: 'API', link: '/api/' },
+      { text: 'Components', link: '/components/scroll-table' },
       { text: 'Config', link: '/config/' },
       { text: 'Advanced', link: '/advanced/index' },
       {
@@ -124,11 +124,15 @@ export default defineConfig({
           ]
         },
         {
-          text: 'API',
+          text: 'Components',
           items: [
             {
-              text: 'Test API Reference',
-              link: '/api/'
+              text: 'ScrollTable',
+              link: '/components/scroll-table'
+            },
+            {
+              text: 'CountUp',
+              link: '/components/count-up'
             }
           ]
         },

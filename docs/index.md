@@ -8,7 +8,6 @@ titleTemplate: A blazing fast unit test framework powered by Vite
 hero:
   name: DataView
   text: ZGT DataView Framework
-  tagline: A Vite-native unit test framework. It's fast!
   image:
     src: /logo-shadow.svg
     alt: DataView

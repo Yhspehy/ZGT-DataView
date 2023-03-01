@@ -22,7 +22,7 @@ export interface ScrollTableProps {
    */
   header?: string[] | null
   /**
-   * 是否展示序
+   * 是否展示序号
    * @default false
    */
   showIdx?: boolean
