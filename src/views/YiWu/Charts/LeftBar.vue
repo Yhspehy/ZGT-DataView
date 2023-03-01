@@ -9,6 +9,8 @@ import {
   type DatasetComponentOption,
   GridComponent,
   type GridComponentOption,
+  TooltipComponent,
+  type TooltipComponentOption,
   VisualMapComponent,
   type VisualMapComponentOption
 } from 'echarts/components'
@@ -19,6 +21,7 @@ echarts.use([
   TitleComponent,
   DatasetComponent,
   GridComponent,
+  TooltipComponent,
   VisualMapComponent,
   BarChart,
   CanvasRenderer
@@ -28,6 +31,7 @@ type EChartsOption = echarts.ComposeOption<
   | TitleComponentOption
   | DatasetComponentOption
   | GridComponentOption
+  | TooltipComponentOption
   | VisualMapComponentOption
   | BarSeriesOption
 >
@@ -44,6 +48,9 @@ onMounted(() => {
     },
     legend: {
       top: '12%'
+    },
+    tooltip: {
+      trigger: 'item'
     },
     xAxis: {
       type: 'category',

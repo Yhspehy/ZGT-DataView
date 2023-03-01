@@ -18,8 +18,10 @@ import LeftBarChart2 from './Charts/LeftBar2.vue'
 
 import LineChart from './Charts/Line.vue'
 import RightPieChart from './Charts/RightPie.vue'
-import RightTopBarChart from './Charts/RightTopBar.vue'
+// import RightTopBarChart from './Charts/RightTopBar.vue'
 import RightBottomBarChart from './Charts/RightBottomBar.vue'
+
+import RightTopBarChart3D from './Charts/RightTopBar3D.vue'
 
 import { useResize } from '@/hooks/resize'
 
@@ -136,7 +138,8 @@ const table2Data = ref(
           <div class="right-part">
             <div class="right-header">
               <right-pie-chart />
-              <right-top-bar-chart />
+              <!-- <right-top-bar-chart /> -->
+              <RightTopBarChart3D />
             </div>
             <div class="table-title">近期船期待发运量</div>
             <ScrollTable

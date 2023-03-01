@@ -7,6 +7,7 @@ import gzipPlugin from 'rollup-plugin-gzip'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // 只在github page上使用
   base: '/ZGT-DataView/',
   plugins: [vue(), vueJsx(), gzipPlugin()],
   resolve: {
