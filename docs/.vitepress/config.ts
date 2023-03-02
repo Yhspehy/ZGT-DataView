@@ -133,6 +133,10 @@ export default defineConfig({
             {
               text: 'CountUp',
               link: '/components/count-up'
+            },
+            {
+              text: 'BorderBox',
+              link: '/components/border-box'
             }
           ]
         },

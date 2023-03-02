@@ -60,6 +60,7 @@ const defaultColor = ref(['#4fd2dd', '#235fa7'])
   width: 100%;
   height: 100%;
   box-sizing: border-box;
+  position: relative;
 
   .border {
     position: absolute;
