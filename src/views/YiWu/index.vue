@@ -180,6 +180,8 @@ const table2Data = ref(
   flex-direction: column;
   transform-origin: left top;
   color: #fff;
+  background-image: url('/bg.png');
+  background-size: 100% 100%;
 
   .header {
     @include flex-center;

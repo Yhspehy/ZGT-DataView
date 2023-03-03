@@ -6,12 +6,17 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('../views/YiWu/index.vue')
+      component: () => import('../views/yiwu/index.vue')
     },
     {
       path: '/demo',
       name: 'demo',
-      component: () => import('../views/Demo/index.vue')
+      component: () => import('../views/demo/index.vue')
+    },
+    {
+      path: '/hz',
+      name: 'hz',
+      component: () => import('../views/hz/index.vue')
     }
   ]
 })
