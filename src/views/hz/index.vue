@@ -14,6 +14,7 @@ import CountUp from '@/components/CountUp/index.vue'
 
 import LeftChart from './Charts/Left.vue'
 import RightChart from './Charts/Right.vue'
+import LeftBarChart from './Charts/LeftBar.vue'
 
 import { useResize } from '@/hooks/resize'
 
@@ -296,16 +297,7 @@ onUnmounted(() => {
       <div class="chart-wrap">
         <left-chart />
         <right-chart />
-
-        <div class="chart-data">
-          <div class="chart-data-wrap">
-            <div class="chart-data-title">今日昼夜计划</div>
-            <div class="chart-data-sub-title">早班:</div>
-            <div class="chart-data-value">100</div>
-            <div class="chart-data-sub-title">晚班:</div>
-            <div class="chart-data-value">200</div>
-          </div>
-        </div>
+        <left-bar-chart />
       </div>
     </div>
   </div>
@@ -395,25 +387,6 @@ onUnmounted(() => {
   .chart-wrap {
     @include flex-start-center;
     flex: 1;
-
-    .chart-data {
-      @include flex-column-center;
-      flex: 1;
-
-      .chart-data-title {
-        font-size: 30px;
-        margin-bottom: 10px;
-      }
-
-      .chart-data-sub-title {
-        font-size: 20px;
-        text-align: left;
-      }
-
-      .chart-data-value {
-        font-size: 20px;
-      }
-    }
   }
 }
 </style>
