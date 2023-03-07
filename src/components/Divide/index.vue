@@ -1,6 +1,6 @@
 <script lang="ts">
 export default {
-  name: 'ScrollTable'
+  name: 'DivideLine'
 }
 </script>
 

@@ -8,7 +8,7 @@ BorderBox组件。
 
 <!-- markdownlint-disable-next-line -->
 <script setup>
-import {BorderBox1, BorderBox2, BorderBox3} from '../../src/components/BorderBox'
+import {BorderBox1, BorderBox2, BorderBox3, BorderBox4} from '../../src/components/BorderBox'
 </script>
 
 ## BorderBox1
@@ -46,3 +46,15 @@ import {BorderBox1, BorderBox2, BorderBox3} from '../../src/components/BorderBox
   <!-- markdownlint-disable-next-line -->
   <div style="height: 200px;width: 100%;"></div>
 </BorderBox3>
+
+## BorderBox4
+
+```vue
+<BorderBox4 title="title"></BorderBox4>
+```
+
+<!-- markdownlint-disable-next-line -->
+<BorderBox4 title="title">
+  <!-- markdownlint-disable-next-line -->
+  <div style="height: 200px;width: 100%;"></div>
+</BorderBox4>
