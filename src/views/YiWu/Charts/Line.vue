@@ -42,14 +42,14 @@ onMounted(() => {
   option = {
     backgroundColor: 'transparent',
     title: {
-      text: '近日进提箱动态'
+      text: '近日进提箱动态',
+      left: 'center'
     },
     tooltip: {
       trigger: 'axis'
     },
     legend: {
-      top: '12%',
-      data: ['单位1', '单位2', '单位3', '单位4', '单位5']
+      top: '12%'
     },
     grid: {
       left: '3%',
@@ -60,7 +60,7 @@ onMounted(() => {
     xAxis: {
       type: 'category',
       boundaryGap: false,
-      data: ['10号', '11号', '12号', '13号', '14号', '15号', '16号']
+      data: ['02-01', '02-02', '02-03', '02-04', '02-05']
     },
     yAxis: {
       type: 'value'
@@ -69,32 +69,12 @@ onMounted(() => {
       {
         name: '单位1',
         type: 'line',
-        stack: 'Total',
-        data: [120, 132, 101, 134, 90, 230, 210]
+        data: [120, 300, 201, 134, 90]
       },
       {
         name: '单位2',
         type: 'line',
-        stack: 'Total',
-        data: [220, 182, 191, 234, 290, 330, 310]
-      },
-      {
-        name: '单位3',
-        type: 'line',
-        stack: 'Total',
-        data: [150, 232, 201, 154, 190, 330, 410]
-      },
-      {
-        name: '单位4',
-        type: 'line',
-        stack: 'Total',
-        data: [320, 332, 301, 334, 390, 330, 320]
-      },
-      {
-        name: '单位5',
-        type: 'line',
-        stack: 'Total',
-        data: [820, 932, 901, 934, 1290, 1330, 1320]
+        data: [220, 112, 261, 204, 290]
       }
     ]
   }
@@ -110,7 +90,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 #middle-line-chart {
   width: 100%;
-  margin-top: 1%;
-  flex: 1;
+  height: 30%;
+  margin: 2% 0;
 }
 </style>

@@ -7,8 +7,6 @@ export default {
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import { BorderBox1, BorderBox3 } from '@/components/BorderBox'
-
 import Divide from '@/components/Divide/index.vue'
 import ScrollTable from '@/components/ScrollTable/index.vue'
 import CountUp from '@/components/CountUp/index.vue'
@@ -18,30 +16,21 @@ import LeftBarChart2 from './Charts/LeftBar2.vue'
 
 import LineChart from './Charts/Line.vue'
 import RightPieChart from './Charts/RightPie.vue'
-// import RightTopBarChart from './Charts/RightTopBar.vue'
+import RightTopBarChart from './Charts/RightTopBar.vue'
 import RightBottomBarChart from './Charts/RightBottomBar.vue'
-
-import RightTopBarChart3D from './Charts/RightTopBar3D.vue'
 
 import { useResize } from '@/hooks/resize'
 
 const { containerRef, screenWidth, screenHeight } = useResize()
 
 const table1Data = ref(
-  new Array(10).fill(1).map(() => ['TRAYW 001SI/001NW', '50', '50', '45'])
-)
-
-const table2Data = ref(
   new Array(10)
     .fill(1)
     .map(() => [
-      'MAERSK LINS/001W',
-      '2023-01-01 10:00:00',
-      '2023-01-01 10:00:00',
-      '50',
-      '2023-01-01 10:00:00',
-      'BLCT2',
-      '150'
+      'TRAYW 001SI/001NW',
+      '2023-01-27 14:30:51/2023-01-29 14:30:51',
+      '50(45)',
+      '2023-01-24 14:30:51'
     ])
 )
 </script>
@@ -58,109 +47,52 @@ const table2Data = ref(
     <div class="header">义乌铁路西站场区作业情况展示</div>
 
     <div class="container">
-      <border-box-1>
-        <div class="container-content">
-          <!-- 左边区域 -->
-          <div class="left-part">
-            <border-box3 class="box">
-              <div class="box-title">堆区在场箱数量</div>
-              <div class="box-item-wrap">
-                <div class="box-item">
-                  <div class="box-item-value">
-                    <count-up :end-val="890" />
-                  </div>
-                  <div class="box-item-title">总数量</div>
-                </div>
-                <div class="box-item">
-                  <div class="box-item-value">
-                    <count-up :end-val="450" />
-                  </div>
-                  <div class="box-item-title">空箱量</div>
-                </div>
-                <div class="box-item">
-                  <div class="box-item-value">
-                    <count-up :end-val="440" />
-                  </div>
-                  <div class="box-item-title">重箱量</div>
-                </div>
-                <div class="box-item">
-                  <div class="box-item-value">
-                    <count-up :end-val="330" />
-                  </div>
-                  <div class="box-item-title">含转关箱</div>
-                </div>
-              </div>
-            </border-box3>
-
-            <div class="left-bar-chart-2">
-              <left-bar-chart2 />
-              <divide position="top" />
-            </div>
-
-            <div class="left-bar-chart">
-              <left-bar-chart />
-              <divide position="top" />
-            </div>
+      <div class="container-content">
+        <!-- 左边区域 -->
+        <div class="left-part">
+          <div class="left-bar-chart">
+            <left-bar-chart />
+            <Divide />
           </div>
 
-          <!-- 中间区域 -->
-          <div class="middle-part">
-            <div class="bar">
-              <div class="bar-title">本年度</div>
-              <div class="barbox-value">
-                <div class="barbox-item">
-                  <count-up :end-val="15000" />
-                </div>
-                <div class="barbox-item">
-                  <count-up :end-val="50000" :duration="3.5" />
-                </div>
-              </div>
-              <div class="barbox-title">
-                <div class="barbox-item">进口箱量</div>
-                <div class="barbox-item">出口箱量</div>
-              </div>
+          <right-pie-chart />
+        </div>
+
+        <!-- 中间区域 -->
+        <div class="middle-part">
+          <div class="table-title">当前场站作业情况</div>
+          <ScrollTable
+            style="height: 30%"
+            :column-flex="[2, 4, 2, 2]"
+            :header="[
+              '船名航次',
+              '截关期/开船期',
+              '本航次集装箱数量（已发运数量）',
+              '铁路发运预计日期'
+            ]"
+            :row-num="6"
+            :data="table1Data"
+            :showIdx="true"
+          />
+
+          <line-chart />
+
+          <div class="middle-footer">
+            <div class="my-count-wrap">
+              <div class="my-count-title">我方站点发运量</div>
+              <count-up end-val="3000000" class="my-count" />
             </div>
-
-            <div class="table-title">当前场站作业情况</div>
-
-            <ScrollTable
-              style="flex: 1"
-              :column-flex="[2, 1, 1, 1]"
-              :header="['车名车次', '计划卸量', '计划装量', '已放行待装']"
-              :data="table1Data"
-              :showIdx="true"
-            />
-
-            <line-chart />
-          </div>
-
-          <!-- 右边区域 -->
-          <div class="right-part">
-            <div class="right-header">
-              <right-pie-chart />
-              <!-- <right-top-bar-chart /> -->
-              <RightTopBarChart3D />
-            </div>
-            <div class="table-title">近期船期待发运量</div>
-            <ScrollTable
-              style="height: 30%"
-              :column-flex="[2, 3, 3, 1, 3, 1, 1]"
-              :header="[
-                '船名航次',
-                '截关期/开船期',
-                '本航次集装箱数量（已发运数量）',
-                '铁路发运预计日期',
-                '靠泊时间',
-                '靠泊码头',
-                '待发箱量'
-              ]"
-              :data="table2Data"
-              :row-num="6"
-            />
             <right-bottom-bar-chart />
           </div>
         </div>
-      </border-box-1>
+
+        <!-- 右边区域 -->
+        <div class="right-part">
+          <left-bar-chart2 />
+
+          <right-top-bar-chart />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -205,106 +137,44 @@ const table2Data = ref(
         width: 20%;
         height: 100%;
 
-        .box {
-          padding: 12px;
-          position: relative;
-          background-color: rgba(255, 255, 255, 0.04);
-
-          .box-title {
-            font-size: 16px;
-            font-weight: bold;
-          }
-
-          .box-item-wrap {
-            @include flex-start-center;
-            flex-wrap: wrap;
-
-            .box-item {
-              @include flex-column-center;
-              width: 50%;
-
-              .box-item-value {
-                font-size: 30px;
-                font-family: electronicFont;
-                font-weight: bold;
-                color: #c5ccff;
-              }
-
-              .box-item-title {
-                font-size: 12px;
-              }
-            }
-          }
-        }
-
         .left-bar-chart {
-          flex: 2;
-          padding-top: 10px;
-        }
-
-        .left-bar-chart-2 {
           flex: 1;
-          margin: 30px 0;
-          padding-top: 10px;
         }
       }
 
       .middle-part {
         @include flex-column;
-        width: 33%;
+        width: 58%;
         margin: 0 1%;
         padding-left: 5px;
         box-sizing: border-box;
 
-        .bar {
-          padding: 0 12px 12px;
-          background-color: transparent;
+        .middle-footer {
+          flex: 1;
+          display: flex;
 
-          .bar-title {
-            text-align: center;
-            font-size: 30px;
-            font-weight: bold;
-          }
+          .my-count-wrap {
+            @include flex-column-center;
+            justify-content: center;
+            width: 200px;
 
-          .barbox-value {
-            @include border-1;
-            @include flex-space-around;
-            font-size: 50px;
-            color: #ffeb7b;
-            font-family: electronicFont;
-            font-weight: bold;
-
-            .barbox-item {
-              flex: 1;
-              text-align: center;
-              position: relative;
-
-              &:first-child:before {
-                position: absolute;
-                content: '';
-                height: 50%;
-                width: 1px;
-                background: rgba(255, 255, 255, 0.2);
-                right: 0;
-                top: 25%;
-              }
+            .my-count-title {
+              font-size: 24px;
+              font-weight: bold;
             }
-          }
 
-          .barbox-title {
-            @include flex-space-around;
-            margin-top: 10px;
-
-            .barbox-item {
-              flex: 1;
-              text-align: center;
+            .my-count {
+              font-family: electronicFont;
+              font-weight: bold;
+              font-size: 50px;
+              color: #ffeb7b;
             }
           }
         }
       }
 
       .right-part {
-        width: 45%;
+        width: 20%;
         height: 100%;
 
         .right-header {

@@ -9,6 +9,10 @@ import {
   type DatasetComponentOption,
   GridComponent,
   type GridComponentOption,
+  LegendComponent,
+  type LegendComponentOption,
+  TooltipComponent,
+  type TooltipComponentOption,
   VisualMapComponent,
   type VisualMapComponentOption
 } from 'echarts/components'
@@ -19,6 +23,8 @@ echarts.use([
   TitleComponent,
   DatasetComponent,
   GridComponent,
+  LegendComponent,
+  TooltipComponent,
   VisualMapComponent,
   BarChart,
   CanvasRenderer
@@ -28,6 +34,8 @@ type EChartsOption = echarts.ComposeOption<
   | TitleComponentOption
   | DatasetComponentOption
   | GridComponentOption
+  | LegendComponentOption
+  | TooltipComponentOption
   | VisualMapComponentOption
   | BarSeriesOption
 >
@@ -40,14 +48,22 @@ onMounted(() => {
   option = {
     backgroundColor: 'transparent',
     title: {
-      text: '当月分货代出口重箱数量'
+      text: '省内其它站点发运数量',
+      left: 'center'
+    },
+    tooltip: {
+      trigger: 'item'
+    },
+    legend: {
+      top: '0%',
+      right: '10%'
     },
     grid: {
-      bottom: '3%'
+      bottom: '10%',
+      right: '4%'
     },
     xAxis: {
-      type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      type: 'category'
     },
     yAxis: {
       type: 'value',
@@ -55,9 +71,19 @@ onMounted(() => {
         show: false
       }
     },
+    dataset: {
+      source: [
+        ['product', '2021', '2022'],
+        ['湖州西', 120, 180],
+        ['上饶', 200, 300],
+        ['北仑', 150, 200]
+      ]
+    },
     series: [
       {
-        data: [120, 200, 150, 80, 70, 110, 130],
+        type: 'bar'
+      },
+      {
         type: 'bar'
       }
     ]
@@ -73,8 +99,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 #right-bar-chart {
-  width: 100%;
-  height: 32%;
-  margin-top: 1%;
+  flex: 1;
+  height: 100%;
 }
 </style>

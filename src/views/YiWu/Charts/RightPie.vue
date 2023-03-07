@@ -38,8 +38,9 @@ onMounted(() => {
   option = {
     backgroundColor: 'transparent',
     title: {
-      text: '各家船公司业务占比',
-      left: 'center'
+      text: '货物种类比例',
+      left: 'center',
+      top: '5%'
     },
     tooltip: {
       trigger: 'item'
@@ -56,11 +57,11 @@ onMounted(() => {
         radius: '50%',
         center: ['50%', '50%'],
         data: [
-          { value: 1048, name: '公司1' },
-          { value: 735, name: '公司2' },
-          { value: 580, name: '公司3' },
-          { value: 484, name: '公司4' },
-          { value: 300, name: '公司5' }
+          { value: 1048, name: '货物1' },
+          { value: 735, name: '货物2' },
+          { value: 580, name: '货物3' },
+          { value: 484, name: '货物4' },
+          { value: 300, name: '货物5' }
         ],
         label: {
           show: false
@@ -79,7 +80,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 #right-pie-chart {
-  width: 50%;
-  height: 100%;
+  width: 100%;
+  flex: 1;
 }
 </style>

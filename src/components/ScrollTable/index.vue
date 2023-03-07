@@ -271,6 +271,7 @@ watch(
   height: 100%;
   color: #fff;
   overflow: hidden;
+  line-height: 1.15;
 
   .thead {
     @include flex-start-center;
@@ -279,8 +280,9 @@ watch(
     padding: 0 10px;
 
     .thead-col {
-      @include ellipsis;
       text-align: center;
+      padding: 2px 0;
+      word-break: keep-all;
     }
   }
 
@@ -295,8 +297,9 @@ watch(
       transition: height 0.3s;
 
       .tbody-col {
-        @include ellipsis;
         text-align: center;
+        padding: 2px 0;
+        word-break: keep-all;
       }
     }
   }

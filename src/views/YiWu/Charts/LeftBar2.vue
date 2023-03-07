@@ -39,11 +39,12 @@ onMounted(() => {
 
   option = {
     title: {
-      text: '堆区分布'
+      text: '各家船公司业务占比',
+      left: 'center'
     },
     backgroundColor: 'transparent',
     grid: {
-      top: '20%',
+      top: '10%',
       left: '15%',
       right: '10%',
       bottom: '10%'
@@ -65,7 +66,18 @@ onMounted(() => {
     },
     yAxis: {
       type: 'category',
-      data: ['B箱区', 'Q箱区'],
+      data: [
+        'CMA',
+        'COS',
+        'MSC',
+        'HMM',
+        'EMC',
+        'YML',
+        'ZIM',
+        'EAS',
+        'NYK',
+        'APL'
+      ],
       axisTick: {
         show: false
       },
@@ -75,7 +87,7 @@ onMounted(() => {
     },
     series: [
       {
-        data: [120, 200],
+        data: [30, 40, 50, 60, 70, 80, 100, 160, 200, 300],
         type: 'bar',
         showBackground: true,
         backgroundStyle: {
@@ -90,7 +102,24 @@ onMounted(() => {
         },
         itemStyle: {
           borderRadius: 25,
-          color: '#3facff'
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 1,
+            y2: 0,
+            colorStops: [
+              {
+                offset: 0,
+                color: '#03c893' // 0% 处的颜色
+              },
+              {
+                offset: 1,
+                color: '#0091ff' // 100% 处的颜色
+              }
+            ],
+            global: false // 缺省为 false
+          }
         }
       }
     ]
@@ -107,6 +136,6 @@ onMounted(() => {
 <style lang="scss" scoped>
 #left-bar-chart-2 {
   width: 100%;
-  height: 100%;
+  height: 60%;
 }
 </style>

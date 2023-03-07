@@ -48,23 +48,28 @@ onMounted(() => {
   option = {
     backgroundColor: 'transparent',
     title: {
-      text: '预约情况显示'
+      text: '代理份额',
+      left: 'center'
     },
     legend: {
-      top: '12%'
+      top: '10%'
     },
     tooltip: {
       trigger: 'item'
     },
     xAxis: { type: 'category' },
-    yAxis: {},
+    yAxis: {
+      splitLine: {
+        show: false
+      }
+    },
     dataset: {
       source: [
-        ['product', '转关箱(已审批)', '非转关箱'],
-        ['Matcha Latte', 43.3, 85.8],
-        ['Milk Tea', 83.1, 73.4],
-        ['Cheese Cocoa', 86.4, 65.2],
-        ['Walnut Brownie', 72.4, 53.9]
+        ['product', '2021', '2022'],
+        ['代理1', 43.3, 85.8],
+        ['代理2', 83.1, 73.4],
+        ['代理3', 86.4, 65.2],
+        ['代理4', 72.4, 53.9]
       ]
     },
     series: [{ type: 'bar' }, { type: 'bar' }]
@@ -80,7 +85,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 #right-top-bar-chart {
-  width: 50%;
-  height: 100%;
+  width: 100%;
+  height: 40%;
 }
 </style>

@@ -44,7 +44,8 @@ onMounted(() => {
   option = {
     backgroundColor: 'transparent',
     title: {
-      text: '历年本站发运量'
+      text: '历年发运量',
+      left: 'center'
     },
     legend: {
       top: '12%'
@@ -68,11 +69,9 @@ onMounted(() => {
     },
     dataset: {
       source: [
-        ['product', '转关箱(已审批)', '非转关箱'],
-        ['Matcha', 43.3, 85.8],
-        ['Milk Tea', 83.1, 73.4],
-        ['Cheese', 86.4, 65.2],
-        ['Walnut', 72.4, 53.9]
+        ['2020', 43.3, 85.8],
+        ['2021', 83.1, 73.4],
+        ['2022', 86.4, 65.2]
       ]
     },
     series: [{ type: 'bar' }, { type: 'bar' }]
