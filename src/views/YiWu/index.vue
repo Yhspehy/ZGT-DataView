@@ -6,10 +6,13 @@ export default {
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { NConfigProvider, NInput, NModal, darkTheme } from 'naive-ui'
 
 import Divide from '@/components/Divide/index.vue'
 import ScrollTable from '@/components/ScrollTable/index.vue'
 import CountUp from '@/components/CountUp/index.vue'
+import ZSteps from '@/components/Steps/index.vue'
+import { BorderBox4 } from '@/components/BorderBox'
 
 import LeftBarChart from './Charts/LeftBar.vue'
 import LeftBarChart2 from './Charts/LeftBar2.vue'
@@ -33,6 +36,59 @@ const table1Data = ref(
       '2023-01-24 14:30:51'
     ])
 )
+
+const showModal = ref(false)
+
+const stepsData = [
+  {
+    title: '进门',
+    time: '实际：2023-03-08 00:39:47'
+  },
+  {
+    title: '义乌西装车',
+    time: '实际：2023-03-08 00:39:47'
+  },
+  {
+    title: '义乌西出发',
+    time: '实际：2023-03-08 00:39:47'
+  },
+  {
+    title: '宁波北出发',
+    time: '实际：2023-03-08 00:39:47'
+  },
+  {
+    title: '大碶出发',
+    time: '实际：2023-03-08 00:39:47'
+  },
+  {
+    title: '北仑到达',
+    time: '实际：2023-03-08 00:39:47'
+  },
+  {
+    title: '卸车',
+    time: '实际：2023-03-08 00:39:47'
+  },
+  {
+    title: '出场',
+    time: '实际：2023-03-08 00:39:47'
+  },
+  {
+    title: '进场',
+    time: '实际：2023-03-08 00:39:47'
+  },
+  {
+    title: '海关放行',
+    time: '实际：2023-03-08 00:39:47'
+  },
+  {
+    title: '码头放行情况',
+    time: '实际：2023-03-08 00:39:47'
+  },
+  {
+    title: '装船',
+    time: '实际：2023-03-08 00:39:47'
+  }
+]
 </script>
 
 <template>
@@ -44,11 +100,21 @@ const table1Data = ref(
     }"
     ref="containerRef"
   >
-    <div class="header">义乌铁路西站场区作业情况展示</div>
+    <div class="header">
+      <div>义乌铁路西站场区作业情况展示</div>
+      <div class="input-wrap">
+        <NConfigProvider :theme="darkTheme">
+          <n-input
+            placeholder="请输入箱号，回车查询节点"
+            style="width: 200px"
+            @keyup.enter="() => (showModal = true)"
+          />
+        </NConfigProvider>
+      </div>
+    </div>
 
     <div class="container">
       <div class="container-content">
-        <!-- 左边区域 -->
         <div class="left-part">
           <div class="left-bar-chart">
             <left-bar-chart />
@@ -58,7 +124,6 @@ const table1Data = ref(
           <right-pie-chart />
         </div>
 
-        <!-- 中间区域 -->
         <div class="middle-part">
           <div class="table-title">当前场站作业情况</div>
           <ScrollTable
@@ -86,7 +151,6 @@ const table1Data = ref(
           </div>
         </div>
 
-        <!-- 右边区域 -->
         <div class="right-part">
           <left-bar-chart2 />
 
@@ -95,6 +159,14 @@ const table1Data = ref(
       </div>
     </div>
   </div>
+
+  <n-modal v-model:show="showModal">
+    <div class="steps">
+      <border-box4 title="节点信息">
+        <z-steps :data="stepsData" :current="10" />
+      </border-box4>
+    </div>
+  </n-modal>
 </template>
 
 <style lang="scss" scoped>
@@ -120,6 +192,12 @@ const table1Data = ref(
     height: 80px;
     font-size: 40px;
     font-weight: bold;
+    position: relative;
+
+    .input-wrap {
+      position: absolute;
+      right: 20px;
+    }
   }
   .container {
     width: 100%;
@@ -191,5 +269,11 @@ const table1Data = ref(
       margin: 10px 0;
     }
   }
+}
+
+.steps {
+  width: 60%;
+  background-color: #05071b;
+  position: relative;
 }
 </style>

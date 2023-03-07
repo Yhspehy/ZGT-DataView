@@ -216,7 +216,7 @@ watch(
       class="thead"
       :style="{ height: `${rowHeight}px`, backgroundColor: headerBg }"
     >
-      <div v-if="showIdx" class="thead-col thead-idx" style="flex: 0 0 5rem">
+      <div v-if="showIdx" class="thead-col thead-idx" style="flex: 0 0 4rem">
         序号
       </div>
       <div
@@ -246,7 +246,7 @@ watch(
           backgroundColor: rowData.idx & 1 ? oddRowBg : evenRowBg
         }"
       >
-        <div v-if="showIdx" class="tbody-col tbody-idx" style="flex: 0 0 5rem">
+        <div v-if="showIdx" class="tbody-col tbody-idx" style="flex: 0 0 4rem">
           {{ rowData.idx }}
         </div>
         <div
