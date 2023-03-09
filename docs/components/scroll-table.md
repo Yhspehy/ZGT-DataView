@@ -90,7 +90,7 @@ import ScrollTable from '../../src/components/scroll-table/index.vue'
 | 属性 | 说明 | 类型 | 默认值 | 版本 |
 |---|---|---|---|---|
 | `data` | 表单数据 | object[] | [] |  |
-| `columnFlex` | 每栏的flex值 | number[] | [] |  |
+| `columnFlex` | 每栏的flex值，序号列默认是1 | number[] | [] |  |
 | `header` | 表头内容 | string[] | [] |  |
 | `showIdx` | 是否展示排序 | boolean | false |  |
 | `animation` | 是否滚动 |boolean | true |  |
