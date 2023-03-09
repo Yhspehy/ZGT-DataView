@@ -2,6 +2,10 @@
 outline:deep
 ---
 
+<!-- markdownlint-disable-next-line -->
+<script setup>
+import CountUp from '../../src/components/CountUp/index.vue'
+</script>
 
 # CountUp
 
@@ -10,6 +14,8 @@ outline:deep
 ```vue
 <count-up :end-val="890" />
 ```
+<!-- markdownlint-disable-next-line -->
+<count-up :end-val="890"></count-up>
 
 ## API
 

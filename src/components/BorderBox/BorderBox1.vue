@@ -1,13 +1,13 @@
 <script lang="ts">
-const border = ['left-top', 'right-top', 'left-bottom', 'right-bottom']
-const defaultColor = ['#4fd2dd', '#235fa7']
-
 export default {
   name: 'borderBox1'
 }
 </script>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const border = ['left-top', 'right-top', 'left-bottom', 'right-bottom']
+const defaultColor = ['#4fd2dd', '#235fa7']
+</script>
 
 <template>
   <div class="border-box-1">
