@@ -4,7 +4,7 @@ outline:deep
 
 <!-- markdownlint-disable-next-line -->
 <script setup>
-import CountUp from '../../src/components/count-up/index.vue'
+import CountUpExample from './example/CountUp.vue'
 </script>
 
 # CountUp
@@ -12,16 +12,16 @@ import CountUp from '../../src/components/count-up/index.vue'
 数字滚动组件。
 
 ```vue
-<count-up :end-val="890" />
+<count-up :start-val="start" :end-val="end" />
 ```
 <!-- markdownlint-disable-next-line -->
-<count-up :end-val="890"></count-up>
+<count-up-example></count-up-example>
 
 ## API
 
 | 属性 | 说明 | 类型 | 默认值 | 版本 |
 |---|---|------|---|---|
-| `endVal` | 结束数值 | `number \| string` |  |  |
+| `endVal` | 结束数值 | `number \| string` | 必填 |  |
 | `startVal` | 开始数值 |  `number \| string` |  |  |
 | `duration` | 动画时长，单位 s | `number \| string` | 2.5 |  |
 | `decimalPlaces` | 小数点位数 | number | 0 |  |
