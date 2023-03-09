@@ -1,8 +1,13 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-const border = ref(['left-top', 'right-top', 'left-bottom', 'right-bottom'])
-const defaultColor = ref(['#4fd2dd', '#235fa7'])
+<script lang="ts">
+const border = ['left-top', 'right-top', 'left-bottom', 'right-bottom']
+const defaultColor = ['#4fd2dd', '#235fa7']
+
+export default {
+  name: 'borderBox1'
+}
 </script>
+
+<script setup lang="ts"></script>
 
 <template>
   <div class="border-box-1">

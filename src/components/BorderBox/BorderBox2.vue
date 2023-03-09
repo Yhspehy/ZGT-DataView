@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  name: 'borderBox2'
+}
+</script>
+
 <script setup lang="ts">
 defineProps<{
   boxStyle?: string

@@ -7,7 +7,7 @@ module.exports = {
       propList: ['*'],
       viewportUnit: 'rem',
       fontViewportUnit: 'rem',
-      selectorBlackList: [],
+      selectorBlackList: ['ignore'],
       minPixelValue: 1,
       mediaQuery: false,
       replace: true,

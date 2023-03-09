@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script lang="ts">
+export default {
+  name: 'borderBox3'
+}
+</script>
 
 <template>
   <div class="borderBox3">
