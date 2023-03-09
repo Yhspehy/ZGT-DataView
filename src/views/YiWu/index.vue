@@ -8,11 +8,11 @@ export default {
 import { ref } from 'vue'
 import { NConfigProvider, NInput, NModal, darkTheme } from 'naive-ui'
 
-import Divide from '@/components/Divide/index.vue'
-import ScrollTable from '@/components/ScrollTable/index.vue'
-import CountUp from '@/components/CountUp/index.vue'
-import ZSteps from '@/components/Steps/index.vue'
-import { BorderBox4 } from '@/components/BorderBox'
+import Divide from '@/components/divide/index.vue'
+import ScrollTable from '@/components/scroll-table/index.vue'
+import CountUp from '@/components/count-up/index.vue'
+import ZSteps from '@/components/steps/index.vue'
+import { BorderBox4 } from '@/components/border-box'
 
 import LeftBarChart from './Charts/LeftBar.vue'
 import LeftBarChart2 from './Charts/LeftBar2.vue'

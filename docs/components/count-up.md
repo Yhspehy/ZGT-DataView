@@ -4,7 +4,7 @@ outline:deep
 
 <!-- markdownlint-disable-next-line -->
 <script setup>
-import CountUp from '../../src/components/CountUp/index.vue'
+import CountUp from '../../src/components/count-up/index.vue'
 </script>
 
 # CountUp

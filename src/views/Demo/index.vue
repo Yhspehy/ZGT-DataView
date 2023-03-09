@@ -2,8 +2,8 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { debounce } from '@/utils/index'
 
-import BorderBox1 from '@/components/BorderBox/BorderBox1.vue'
-import BorderBox2 from '@/components/BorderBox/BorderBox2.vue'
+import BorderBox1 from '@/components/border-box/BorderBox1.vue'
+import BorderBox2 from '@/components/border-box/BorderBox2.vue'
 
 import LeftChart1 from './Charts/LeftChart1.vue'
 import LeftChart2 from './Charts/LeftChart2.vue'

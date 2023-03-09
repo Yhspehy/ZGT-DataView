@@ -8,11 +8,11 @@ const router = createRouter({
       name: 'home',
       component: () => import('../views/yiwu/index.vue')
     },
-    {
-      path: '/demo',
-      name: 'demo',
-      component: () => import('../views/demo/index.vue')
-    },
+    // {
+    //   path: '/demo',
+    //   name: 'demo',
+    //   component: () => import('../views/demo/index.vue')
+    // },
     {
       path: '/hz',
       name: 'hz',

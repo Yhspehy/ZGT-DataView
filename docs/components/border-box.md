@@ -8,7 +8,16 @@ BorderBox组件。
 
 <!-- markdownlint-disable-next-line -->
 <script setup>
-import {BorderBox1, BorderBox2, BorderBox3, BorderBox4,BorderBox5, BorderBox6, BorderBox7} from '../../src/components/BorderBox'
+import {
+  BorderBox1,
+  BorderBox2,
+  BorderBox3,
+  BorderBox4,
+  BorderBox5,
+  BorderBox6,
+  BorderBox7,
+  BorderBox8
+} from '../../src/components/border-box'
 </script>
 
 ## BorderBox1
@@ -101,3 +110,22 @@ import {BorderBox1, BorderBox2, BorderBox3, BorderBox4,BorderBox5, BorderBox6, B
   <!-- markdownlint-disable-next-line -->
   <div style="height: 200px;width: 100%;"></div>
 </BorderBox7>
+
+## BorderBox8
+
+```vue
+<BorderBox8 ></BorderBox8>
+```
+
+<!-- markdownlint-disable-next-line -->
+<BorderBox8 >
+  <!-- markdownlint-disable-next-line -->
+  <div style="height: 200px;width: 100%;"></div>
+</BorderBox8>
+
+## BorderBox8 API
+
+| 属性 | 说明 | 类型 | 默认值 | 版本 |
+|---|---|---|---|---|
+| `reverse` | 动画方向，默认顺时针 | boolean | false |  |
+| `duration` | 动画时间(s) | number | 3 |  |

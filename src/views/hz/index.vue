@@ -10,7 +10,7 @@ import { ref, reactive, onUnmounted } from 'vue'
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 
-import CountUp from '@/components/CountUp/index.vue'
+import CountUp from '@/components/count-up/index.vue'
 
 import LeftChart from './Charts/Left.vue'
 import RightChart from './Charts/Right.vue'

@@ -4,7 +4,7 @@ outline:deep
 
 <!-- markdownlint-disable-next-line -->
 <script setup>
-import ScrollTable from '../../src/components/ScrollTable/index.vue'
+import ScrollTable from '../../src/components/scroll-table/index.vue'
 </script>
 
 # ScrollTable
@@ -13,6 +13,7 @@ import ScrollTable from '../../src/components/ScrollTable/index.vue'
 
 ```vue
 <scroll-table
+  style="height: 140px;"
   :header="[
     '船名航次',
     '截关期/开船期',
@@ -44,14 +45,13 @@ import ScrollTable from '../../src/components/ScrollTable/index.vue'
     ]]"
   :row-num="3"
   :show-idx="true"
-  :animation="false"
 />
 ```
 
 <!-- markdownlint-disable-next-line -->
 
 <scroll-table
-  style="height: 200px;"
+  style="height: 140px;"
  :header="[
     '船名航次',
     '截关期/开船期',
@@ -83,7 +83,6 @@ import ScrollTable from '../../src/components/ScrollTable/index.vue'
     ]]"
   :row-num="3"
   :show-idx="true"
-  :animation="false"
 ></scroll-table>
 
 ## API
