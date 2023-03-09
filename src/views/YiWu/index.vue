@@ -128,7 +128,7 @@ const stepsData = [
           <div class="table-title">当前场站作业情况</div>
           <ScrollTable
             style="height: 30%"
-            :column-flex="[2, 4, 2, 2]"
+            :column-flex="[4, 8, 4, 4]"
             :header="[
               '船名航次',
               '截关期/开船期',

@@ -5,7 +5,7 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
+import { ref, watch, computed, onMounted, onUnmounted, nextTick } from 'vue'
 
 export interface ScrollTableProps {
   /**
@@ -89,6 +89,13 @@ const dataTransfer = ref(
 
 const animationIdx = ref(0)
 let lastIntervalId: number | null = null
+
+const allColumnFlex = computed(() =>
+  props.columnFlex.reduce(
+    (all, current) => (all += current),
+    props.showIdx ? 1 : 0
+  )
+)
 
 // 计算每一行的高度
 function calcRowHeight() {
@@ -216,14 +223,20 @@ watch(
       class="thead"
       :style="{ height: `${rowHeight}px`, backgroundColor: headerBg }"
     >
-      <div v-if="showIdx" class="thead-col thead-idx" style="flex: 0 0 4rem">
+      <div
+        v-if="showIdx"
+        class="thead-col thead-idx"
+        :style="{ width: `${(1 / allColumnFlex) * 100}%` }"
+      >
         序号
       </div>
       <div
         v-for="(h, hIdx) in header"
         :key="h"
         class="thead-col"
-        :style="{ flex: columnFlex[hIdx] || 1 }"
+        :style="{
+          width: `${((columnFlex[hIdx] || 1) / allColumnFlex) * 100}%`
+        }"
       >
         {{ h }}
       </div>
@@ -246,7 +259,11 @@ watch(
           backgroundColor: rowData.idx & 1 ? oddRowBg : evenRowBg
         }"
       >
-        <div v-if="showIdx" class="tbody-col tbody-idx" style="flex: 0 0 4rem">
+        <div
+          v-if="showIdx"
+          class="tbody-col tbody-idx"
+          :style="{ width: `${(1 / allColumnFlex) * 100}%` }"
+        >
           {{ rowData.idx }}
         </div>
         <div
@@ -254,7 +271,7 @@ watch(
           :key="colIdx"
           class="tbody-col"
           :style="{
-            flex: columnFlex[colIdx] || 1
+            width: `${((columnFlex[colIdx] || 1) / allColumnFlex) * 100}%`
           }"
         >
           {{ colData }}
