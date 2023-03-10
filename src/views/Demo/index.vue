@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import { debounce } from '@/utils/index'
+import { debounce } from 'lodash-es'
 
 import BorderBox1 from '@/components/border-box/BorderBox1.vue'
 import BorderBox2 from '@/components/border-box/BorderBox2.vue'
@@ -38,7 +38,7 @@ function onResize() {
   }
 }
 
-const debounceOnResize = debounce(100, onResize)
+const debounceOnResize = debounce(onResize, 100)
 
 onMounted(() => {
   onResize()

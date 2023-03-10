@@ -1,12 +1,16 @@
-import { ref, onMounted, onUnmounted } from 'vue'
-import { debounce } from '@/utils/index'
+import { ref, type Ref, onMounted, onUnmounted } from 'vue'
+import { debounce } from 'lodash-es'
 
 /**
  * resize hook
  * @returns
  */
-export function useResize() {
-  const containerRef = ref<HTMLInputElement | null>(null)
+export function useResize(): {
+  containerRef: Ref<HTMLElement | null>
+  screenWidth: Ref<number>
+  screenHeight: Ref<number>
+} {
+  const containerRef = ref<HTMLElement | null>(null)
   const screenWidth = ref(document.body.clientWidth)
   const screenHeight = ref(document.body.clientHeight)
 
@@ -22,7 +26,7 @@ export function useResize() {
     }
   }
 
-  const debounceOnResize = debounce(100, onResize)
+  const debounceOnResize = debounce(onResize, 100)
 
   onMounted(() => {
     onResize()
@@ -33,5 +37,10 @@ export function useResize() {
     window.removeEventListener('resize', debounceOnResize)
   })
 
-  return { containerRef, screenWidth, screenHeight }
+  return {
+    //@ts-ignore
+    containerRef,
+    screenWidth,
+    screenHeight
+  }
 }
