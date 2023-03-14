@@ -31,7 +31,7 @@ export interface ConicalChartProps {
    * 图片长度
    * @default 30
    */
-  imgSideLength?: number
+  imgSize?: number
   /**
    * 图表颜色
    * @default 'rgba(0, 194, 255, 0.4)'
@@ -46,12 +46,12 @@ export interface ConicalChartProps {
    * 是否自动排序
    * @default true
    */
-  sort: true
+  sort?: boolean
 }
 
 const props = withDefaults(defineProps<ConicalChartProps>(), {
   fontSize: 12,
-  imgSideLength: 30,
+  imgSize: 30,
   textColor: '#fff',
   columnColor: 'rgba(0, 194, 255, 0.4)',
   showValue: false,
@@ -86,7 +86,7 @@ const column = computed(() => {
   const itemNum = chartData.value.length
   const gap = width.value / (itemNum + 1)
 
-  const useAbleHeight = height.value - props.imgSideLength - props.fontSize - 5
+  const useAbleHeight = height.value - props.imgSize - props.fontSize - 5
   const svgBottom = height.value - props.fontSize - 5
 
   return chartData.value.map((item, i) => {
@@ -122,8 +122,8 @@ const column = computed(() => {
 </script>
 
 <template>
-  <div class="percent-pond" ref="containerRef">
-    <svg :width="width" :height="height">
+  <div class="conical-chart" ref="containerRef">
+    <svg class="svg-container" :width="width" :height="height">
       <g v-for="(item, i) in column" :key="i">
         <path :d="item.d" :fill="columnColor" />
         <text
@@ -137,10 +137,10 @@ const column = computed(() => {
         <image
           v-if="item.img"
           :xlink:href="item.img"
-          :width="imgSideLength"
-          :height="imgSideLength"
-          :x="item.x - imgSideLength / 2"
-          :y="item.y - imgSideLength"
+          :width="imgSize"
+          :height="imgSize"
+          :x="item.x - imgSize / 2"
+          :y="item.y - imgSize"
         />
         <text
           v-if="showValue"
@@ -148,7 +148,6 @@ const column = computed(() => {
           :fill="textColor"
           :x="item.x"
           :y="item.textY"
-          class="text"
         >
           {{ item.value }}
         </text>
@@ -158,7 +157,7 @@ const column = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-.text {
+.svg-container text {
   text-anchor: middle;
 }
 </style>

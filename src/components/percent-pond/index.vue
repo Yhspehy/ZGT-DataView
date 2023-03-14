@@ -57,7 +57,6 @@ const props = withDefaults(defineProps<PercentPondProps>(), {
   borderWidth: 3,
   borderGap: 3,
   borderRadius: 5,
-
   lineDash: () => [5, 1],
   colors: () => ['#3DE7C9', '#00BAFF']
 })
@@ -131,14 +130,13 @@ const details = computed(() => {
         :stroke-dasharray="lineDash.join(',')"
         :stroke="`url(#${gradientId})`"
         :points="points"
-        class="polyline"
+        class="polylie"
       />
       <text
         :stroke="textColor"
         :fill="textColor"
         :x="width / 2"
         :y="height / 2"
-        class="text"
       >
         {{ details }}
       </text>
@@ -150,16 +148,16 @@ const details = computed(() => {
 .svg-container {
   width: 100%;
   height: 100%;
-}
 
-.polyline {
-  transition: all 0.3s;
-}
+  polyline {
+    transition: all 0.3s;
+  }
 
-.text {
-  font-size: 25px;
-  font-weight: bold;
-  text-anchor: middle;
-  dominant-baseline: middle;
+  text {
+    font-size: 25px;
+    font-weight: bold;
+    text-anchor: middle;
+    dominant-baseline: middle;
+  }
 }
 </style>

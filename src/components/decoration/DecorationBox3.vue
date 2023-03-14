@@ -20,18 +20,18 @@ export interface DecorationBox3 {
    * 扫描动画时长(秒)
    * @default 3
    */
-  haloDur?: number
+  haloDuration?: number
   /**
    * 光晕动画时长(秒)
    * @default 2
    */
-  scanDur?: number
+  scanDuration?: number
 }
 
 const props = withDefaults(defineProps<DecorationBox3>(), {
   color: () => ['#2783ce', '#2cf7fe'],
-  haloDur: 2,
-  scanDur: 3
+  haloDuration: 2,
+  scanDuration: 3
 })
 
 const { containerRef: decorationBox3, width, height } = useGetContainerRect()
@@ -193,13 +193,13 @@ onMounted(() => {
       <animate
         attributeName="r"
         :values="`1;${width / 2}`"
-        :dur="`${haloDur}s`"
+        :dur="`${haloDuration}s`"
         repeatCount="indefinite"
       />
       <animate
         attributeName="opacity"
         values="1;0"
-        :dur="`${haloDur}s`"
+        :dur="`${haloDuration}s`"
         repeatCount="indefinite"
       />
     </circle>
@@ -231,7 +231,7 @@ onMounted(() => {
         attributeName="transform"
         type="rotate"
         :values="`0, ${x} ${y};360, ${x} ${y}`"
-        :dur="`${scanDur}s`"
+        :dur="`${scanDuration}s`"
         repeatCount="indefinite"
       />
     </use>

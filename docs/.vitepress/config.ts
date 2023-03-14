@@ -86,10 +86,10 @@ export default defineConfig({
     },
 
     nav: [
-      { text: 'Guide', link: '/guide/' },
-      { text: 'Components', link: '/components/scroll-table' },
-      { text: 'Config', link: '/config/' },
-      { text: 'Advanced', link: '/advanced/index' },
+      { text: '介绍', link: '/guide/' },
+      { text: '组件', link: '/components/scroll-table' },
+      // { text: 'Config', link: '/config/' },
+      // { text: 'Advanced', link: '/advanced/index' },
       {
         text: `v${version}`,
         items: [
@@ -102,69 +102,69 @@ export default defineConfig({
     ],
 
     sidebar: {
-      '/advanced': [
-        {
-          text: 'Advanced',
-          items: [
-            {
-              text: 'DataView Node API',
-              link: '/advanced/index'
-            }
-          ]
-        }
-      ],
+      // '/advanced': [
+      //   {
+      //     text: 'Advanced',
+      //     items: [
+      //       {
+      //         text: 'DataView Node API',
+      //         link: '/advanced/index'
+      //       }
+      //     ]
+      //   }
+      // ],
       '/': [
         {
-          text: 'Guide',
+          text: '介绍 ',
           items: [
             {
-              text: 'Getting Started',
+              text: 'ZGT-DateView',
               link: '/guide/'
             }
           ]
         },
         {
-          text: 'Components',
+          text: '组件 Components',
           items: [
             {
-              text: 'ScrollTable',
+              text: '轮播表 Scroll Table',
               link: '/components/scroll-table'
             },
             {
-              text: 'CountUp',
+              text: '数字滚动 Count Up',
               link: '/components/count-up'
             },
             {
-              text: 'BorderBox',
+              text: '边框 Border Box',
               link: '/components/border-box'
             },
             {
-              text: 'Decoration',
+              text: '装饰 Decoration Box',
               link: '/components/decoration'
             },
             {
-              text: 'CapsureTable',
+              text: '胶囊图 Capsure Table',
               link: '/components/capsure-table'
             },
             {
-              text: 'PercentPond',
+              text: '进度池 Percent Pond',
               link: '/components/percent-pond'
             },
             {
-              text: 'ConicalChart',
+              text: '锥形柱图 Conical Chart',
               link: '/components/conical-chart'
             }
           ]
-        },
-        {
-          text: 'Config',
-          items: [
-            {
-              text: 'Config Reference',
-              link: '/config/'
-            }
-          ]
         }
+        // {
+        //   text: 'Config',
+        //   items: [
+        //     {
+        //       text: 'Config Reference',
+        //       link: '/config/'
+        //     }
+        //   ]
+        // }
       ]
     }
   }

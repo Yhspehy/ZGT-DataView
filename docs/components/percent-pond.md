@@ -66,7 +66,7 @@ import PercentPond from '../../src/components/percent-pond/index.vue'
   style="width: 200px; height: 100px;"
   :value="100"
   :colors="['#01c4f9', '#c135ff']"
-  :lineDash="[47, 3, 94, 3, 47, 3]"
+  :line-dash="[47, 3, 94, 3, 47, 3]"
 />
 ```
 
@@ -74,7 +74,7 @@ import PercentPond from '../../src/components/percent-pond/index.vue'
   style="width: 200px; height: 100px;"
   :value="100"
   :colors="['#01c4f9', '#c135ff']"
-  :lineDash="[47, 3, 94, 3, 47, 3]"
+  :line-dash="[47, 3, 94, 3, 47, 3]"
 />
 
 ## 调节边框
@@ -83,9 +83,9 @@ import PercentPond from '../../src/components/percent-pond/index.vue'
 <percent-pond
   style="width: 200px; height: 100px;"
   :value="66"
-  :borderWidth="5"
-  :borderRadius="10"
-  :borderGap="5"
+  :border-width="5"
+  :border-radius="10"
+  :border-gap="5"
 />
 ```
 
@@ -93,9 +93,9 @@ import PercentPond from '../../src/components/percent-pond/index.vue'
 <percent-pond
   style="width: 200px; height: 100px;"
   :value="66"
-  :borderWidth="5"
-  :borderRadius="10"
-  :borderGap="5"
+  :border-width="5"
+  :border-radius="10"
+  :border-gap="5"
 />
 
 ## 线条间隙
@@ -104,7 +104,7 @@ import PercentPond from '../../src/components/percent-pond/index.vue'
 <percent-pond
   style="width: 200px; height: 100px;"
   :value="66"
-  :lineDash="[10, 2]"
+  :line-dash="[10, 2]"
 />
 ```
 
@@ -112,7 +112,7 @@ import PercentPond from '../../src/components/percent-pond/index.vue'
 <percent-pond
   style="width: 200px; height: 100px;"
   :value="66"
-  :lineDash="[10, 2]"
+  :line-dash="[10, 2]"
 />
 
 ## API
@@ -121,9 +121,9 @@ import PercentPond from '../../src/components/percent-pond/index.vue'
 |---|---|---|---|---|
 | `value` | 百分比值 | number | require |  |
 | `text` | 文本内容，不传则默认展示`${value}%` | string | '' |  |
-| `textColor` | 文本字体颜色 | string | '#fff' |  |
-| `borderWidth` | border宽度 | number | 3 |  |
-| `borderGap` | border间隙 | number | 3 |  |
-| `borderRadius` | border弧度 | number | 5 |  |
-| `lineDash` | 线条间隙，可个性化定制 | number[] | [5, 1] |  |
+| `text-color` | 文本字体颜色 | string | '#fff' |  |
+| `border-width` | border宽度 | number | 3 |  |
+| `border-gap` | border间隙 | number | 3 |  |
+| `border-radius` | border弧度 | number | 5 |  |
+| `line-dash` | 线条间隙，可个性化定制 | number[] | [5, 1] |  |
 | `colors` | 渐变颜色，从左到右 | string[] | ['#3DE7C9', '#00BAFF'] |  |

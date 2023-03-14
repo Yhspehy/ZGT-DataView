@@ -92,12 +92,12 @@ import ScrollTable from '../../src/components/scroll-table/index.vue'
 | 属性 | 说明 | 类型 | 默认值 | 版本 |
 |---|---|---|---|---|
 | `data` | 表单数据 | object[] | [] |  |
-| `columnFlex` | 每栏的flex值，序号列默认是1 | number[] | [] |  |
+| `column-flex` | 每栏的flex值，序号列默认是1 | number[] | [] |  |
 | `header` | 表头内容 | string[] | [] |  |
-| `showIdx` | 是否展示排序 | boolean | false |  |
+| `show-idx` | 是否展示排序 | boolean | false |  |
 | `animation` | 是否滚动 |boolean | true |  |
 | `duration` | 滚动动画间隔 | number | 3000 |  |
-| `headerBg` | header的背景色 | string | #002c8a |  |
-| `oddRowBg` | 单数行的背景 | string | #010c32 |  |
-| `evenRowBg` | 双数行的背景 | string | #03184b |  |
-| `rowNum` | 表单可以存放几行,其中包括了header一行 | number | 7 |  |
+| `header-bg` | header的背景色 | string | #002c8a |  |
+| `odd-row-bg` | 单数行的背景 | string | #010c32 |  |
+| `even-row-bg` | 双数行的背景 | string | #03184b |  |
+| `row-num` | 表单可以存放几行,其中包括了header一行 | number | 7 |  |
