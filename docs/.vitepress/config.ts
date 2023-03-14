@@ -149,6 +149,10 @@ export default defineConfig({
             {
               text: 'PercentPond',
               link: '/components/percent-pond'
+            },
+            {
+              text: 'ConicalChart',
+              link: '/components/conical-chart'
             }
           ]
         },
