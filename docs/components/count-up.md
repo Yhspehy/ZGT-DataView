@@ -11,7 +11,7 @@ import CountUpExample from './example/CountUp.vue'
 
 数字滚动组件。
 
-## demo
+## 基础
 
 ```js
 <count-up :start-val="start" :end-val="end" />

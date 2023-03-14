@@ -145,6 +145,10 @@ export default defineConfig({
             {
               text: 'CapsureTable',
               link: '/components/capsure-table'
+            },
+            {
+              text: 'PercentPond',
+              link: '/components/percent-pond'
             }
           ]
         },

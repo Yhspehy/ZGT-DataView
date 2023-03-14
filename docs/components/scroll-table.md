@@ -11,7 +11,7 @@ import ScrollTable from '../../src/components/scroll-table/index.vue'
 
 自动滚动的table组件。
 
-## demo
+## 基础
 
 ```js
 <scroll-table

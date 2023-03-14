@@ -1,20 +1,39 @@
+<script lang="ts">
+export default {
+  name: 'CapsureTable'
+}
+</script>
+
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
 
 export interface CapsureTableProps {
+  /**
+   * 表格内容
+   */
   data: Array<{
     name: string
     value: string
   }>
-  rowHeight?: number
+  /**
+   * 单位
+   * @default ''
+   */
   unit?: string
+  /**
+   * 是否展示值
+   * @default true
+   */
   showValue?: boolean
+  /**
+   * colors list
+   */
   colors?: string[]
 }
 
 const props = withDefaults(defineProps<CapsureTableProps>(), {
   rowHeight: 1,
-  unit: '单位',
+  unit: '',
   showValue: true,
   colors: () => [
     '#37a2da',
@@ -34,19 +53,14 @@ const labelDataLength = ref<any[]>([])
 
 onMounted(() => {
   capsuleValue.value = props.data.map(({ value }) => value)
-
   const maxValue = Math.max(...capsuleValue.value)
-
   capsuleLength.value = capsuleValue.value.map((v) =>
     maxValue ? v / maxValue : 0
   )
-
   const oneFifth = maxValue / 5
-
   labelData.value = Array.from(
     new Set(new Array(6).fill(0).map((v, i) => Math.ceil(i * oneFifth)))
   )
-
   labelDataLength.value = Array.from(labelData.value).map((v) =>
     maxValue ? v / maxValue : 0
   )

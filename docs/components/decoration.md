@@ -101,11 +101,9 @@ import {
 
   | 属性 | 说明 | 类型 | 默认值 | 版本 |
   |---|---|---|---|---|
-  | `color` | 小方格颜色 | string | '#7acaec' |  |
-  | `colNum` | 一行有几个小方格 | number | 30 |  |
-  | `width` | 每个小方格的rem值 | number | 0.3 |  |
-  | `maxHeight` | 容器高度的rem值 | number | 2 |  |
-  | `baseDuration` | 基础动画时间间隔 | number | 1.5 |  |
+  | `color` | 颜色 | string[] | ['#2783ce', '#2cf7fe'] |  |
+  | `scanDur` | 扫描动画时长(秒) | number | 3 |  |
+  | `haloDur` | 光晕动画时长(秒) | number | 2 |  |
 
 
 

@@ -11,24 +11,31 @@ import { ref, computed, onMounted } from 'vue'
 import { fade } from '../../utils/color'
 
 export interface DecorationBox3 {
+  /**
+   * 颜色,从内到外
+   */
   color?: [string, string]
-  colNum?: number
-  width?: number
+  /**
+   * 扫描动画时长(秒)
+   * @default 3
+   */
   haloDur?: number
+  /**
+   * 光晕动画时长(秒)
+   * @default 2
+   */
   scanDur?: number
 }
 
 const props = withDefaults(defineProps<DecorationBox3>(), {
   color: () => ['#2783ce', '#2cf7fe'],
-  colNum: 30,
-  width: 0.3,
   haloDur: 2,
   scanDur: 3
 })
 
 const decorationBox3 = ref<HTMLInputElement | null>(null)
-const gId = ref(`decoration-12-g-${id}`)
-const gradientId = ref(`decoration-12-gradient-${id}`)
+const gId = ref(`decoration-3-g-${id}`)
+const gradientId = ref(`decoration-3-gradient-${id}`)
 id++
 const width = ref(0)
 const height = ref(0)
