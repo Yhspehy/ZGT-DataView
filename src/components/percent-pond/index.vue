@@ -6,7 +6,8 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
+import { useGetContainerRect } from '../../hooks/resize'
 
 export interface PercentPondProps {
   /**
@@ -61,12 +62,9 @@ const props = withDefaults(defineProps<PercentPondProps>(), {
   colors: () => ['#3DE7C9', '#00BAFF']
 })
 
-const containerRef = ref<HTMLElement | null>(null)
+const { containerRef, width, height } = useGetContainerRect()
 const gradientId = ref(`percent-pond-gradientId-${id}`)
 id++
-
-const width = ref(0)
-const height = ref(0)
 
 const rectWidth = computed(() => {
   return width.value - props.borderWidth
@@ -101,11 +99,6 @@ const linearGradient = computed(() => {
 
 const details = computed(() => {
   return props.text || props.value + '%'
-})
-
-onMounted(() => {
-  width.value = containerRef.value!.clientWidth
-  height.value = containerRef.value!.clientHeight
 })
 </script>
 

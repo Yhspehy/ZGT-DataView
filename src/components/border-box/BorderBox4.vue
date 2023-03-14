@@ -8,7 +8,8 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
+import { useGetContainerRect } from '../../hooks/resize'
 
 export interface BorderBox4Props {
   title?: string
@@ -20,17 +21,10 @@ withDefaults(defineProps<BorderBox4Props>(), {
   titleWidth: 250
 })
 
+const { containerRef: borderBox4Ref, width, height } = useGetContainerRect()
+
 const filterId = ref(`border-box-4-filterId-${box4Id}`)
 box4Id++
-
-const borderBox4Ref = ref<HTMLInputElement | null>(null)
-const width = ref(0)
-const height = ref(0)
-
-onMounted(() => {
-  width.value = borderBox4Ref.value!.clientWidth
-  height.value = borderBox4Ref.value!.clientHeight
-})
 </script>
 
 <template>

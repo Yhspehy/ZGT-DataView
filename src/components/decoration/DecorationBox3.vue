@@ -7,6 +7,7 @@ export default {
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
+import { useGetContainerRect } from '../../hooks/resize'
 
 import { fade } from '../../utils/color'
 
@@ -33,12 +34,11 @@ const props = withDefaults(defineProps<DecorationBox3>(), {
   scanDur: 3
 })
 
-const decorationBox3 = ref<HTMLInputElement | null>(null)
+const { containerRef: decorationBox3, width, height } = useGetContainerRect()
+
 const gId = ref(`decoration-3-g-${id}`)
 const gradientId = ref(`decoration-3-gradient-${id}`)
 id++
-const width = ref(0)
-const height = ref(0)
 
 const pathD = ref<any[]>([])
 const pathColor = ref<any[]>([])
@@ -140,18 +140,10 @@ function calcArcD() {
 }
 
 onMounted(() => {
-  const { clientWidth, clientHeight } = decorationBox3.value!
-  width.value = clientWidth
-  height.value = clientHeight
-
   calcPathD()
-
   calcPathColor()
-
   calcCircleR()
-
   calcSplitLinePoints()
-
   calcArcD()
 })
 </script>

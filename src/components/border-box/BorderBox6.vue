@@ -8,20 +8,15 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
+
 import { fade } from '../../utils/color'
+import { useGetContainerRect } from '../../hooks/resize'
+
+const { containerRef: borderBox6Ref, width, height } = useGetContainerRect()
 
 const filterId = ref(`border-box-4-filterId-${box6Id}`)
 box6Id++
-
-const borderBox6Ref = ref<HTMLInputElement | null>(null)
-const width = ref(0)
-const height = ref(0)
-
-onMounted(() => {
-  width.value = borderBox6Ref.value!.clientWidth
-  height.value = borderBox6Ref.value!.clientHeight
-})
 </script>
 
 <template>

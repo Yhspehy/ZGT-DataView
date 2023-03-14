@@ -6,17 +6,9 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { useGetContainerRect } from '../../hooks/resize'
 
-const borderBox9Ref = ref<HTMLInputElement | null>(null)
-const width = ref(0)
-const height = ref(0)
-
-onMounted(() => {
-  const { clientWidth, clientHeight } = borderBox9Ref.value!
-  width.value = clientWidth
-  height.value = clientHeight
-})
+const { containerRef: borderBox9Ref, width, height } = useGetContainerRect()
 </script>
 
 <template>

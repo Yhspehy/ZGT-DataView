@@ -5,7 +5,8 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { ref, computed, onMounted } from 'vue'
+import { computed } from 'vue'
+import { useGetContainerRect } from '../../hooks/resize'
 
 export interface ConicalChartProps {
   /**
@@ -57,10 +58,7 @@ const props = withDefaults(defineProps<ConicalChartProps>(), {
   sort: true
 })
 
-const containerRef = ref<HTMLElement | null>(null)
-
-const width = ref(0)
-const height = ref(0)
+const { containerRef, width, height } = useGetContainerRect()
 
 const chartData = computed(() => {
   let max = 0
@@ -120,11 +118,6 @@ const column = computed(() => {
       textY
     }
   })
-})
-
-onMounted(() => {
-  width.value = containerRef.value!.clientWidth
-  height.value = containerRef.value!.clientHeight
 })
 </script>
 

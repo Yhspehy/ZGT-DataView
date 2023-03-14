@@ -8,6 +8,7 @@ export default {
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
+import { useGetContainerRect } from '../../hooks/resize'
 
 export interface BorderBox8Props {
   reverse?: boolean
@@ -19,9 +20,8 @@ const props = withDefaults(defineProps<BorderBox8Props>(), {
   duration: 3
 })
 
-const borderBox8Ref = ref<HTMLInputElement | null>(null)
-const width = ref(0)
-const height = ref(0)
+const { containerRef: borderBox8Ref, width, height } = useGetContainerRect()
+
 const length = ref(0)
 
 const path = ref(`border-box-8-path-${box8Id}`)
@@ -41,10 +41,7 @@ const pathD = computed(() => {
 })
 
 onMounted(() => {
-  const { clientWidth, clientHeight } = borderBox8Ref.value!
-  width.value = clientWidth
-  height.value = clientHeight
-  length.value = (clientWidth + clientHeight - 5) * 2
+  length.value = (width.value + height.value - 5) * 2
 })
 </script>
 

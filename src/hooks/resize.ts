@@ -44,3 +44,29 @@ export function useResize(): {
     screenHeight
   }
 }
+
+/**
+ * get container ref hook
+ * @returns
+ */
+export function useGetContainerRect(): {
+  containerRef: Ref<HTMLElement | null>
+  width: Ref<number>
+  height: Ref<number>
+} {
+  const containerRef = ref<HTMLElement | null>(null)
+  const width = ref(0)
+  const height = ref(0)
+
+  onMounted(() => {
+    width.value = containerRef.value!.clientWidth
+    height.value = containerRef.value!.clientHeight
+  })
+
+  return {
+    //@ts-ignore
+    containerRef,
+    width,
+    height
+  }
+}
