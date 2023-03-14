@@ -92,7 +92,24 @@ onMounted(() => {
         },
         itemStyle: {
           borderRadius: 25,
-          color: '#3facff'
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 1,
+            y2: 0,
+            colorStops: [
+              {
+                offset: 0,
+                color: '#03c893'
+              },
+              {
+                offset: 1,
+                color: '#0091ff'
+              }
+            ],
+            global: false
+          }
         }
       }
     ]

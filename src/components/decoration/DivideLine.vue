@@ -42,6 +42,15 @@ withDefaults(defineProps<DivideProps>(), {
   animation: divide-animation-x 6s linear infinite;
 }
 
+.left {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  transform: translateY(-100%);
+  animation: divide-animation-y 6s linear infinite;
+}
+
 .right {
   right: 0;
   top: 0;

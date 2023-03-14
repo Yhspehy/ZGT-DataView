@@ -8,7 +8,7 @@ export default {
 import { ref } from 'vue'
 import { NConfigProvider, NInput, NModal, darkTheme } from 'naive-ui'
 
-import Divide from '@/components/divide/index.vue'
+import { DivideLine } from '@/components/decoration'
 import ScrollTable from '@/components/scroll-table/index.vue'
 import CountUp from '@/components/count-up/index.vue'
 import ZSteps from '@/components/steps/index.vue'
@@ -118,7 +118,7 @@ const stepsData = [
         <div class="left-part">
           <div class="left-bar-chart">
             <left-bar-chart />
-            <Divide />
+            <divide-line />
           </div>
 
           <right-pie-chart />
