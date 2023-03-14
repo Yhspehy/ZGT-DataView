@@ -1,5 +1,5 @@
 ---
-outline:deep
+outline: deep
 ---
 
 <!-- markdownlint-disable-next-line -->
@@ -11,7 +11,9 @@ import CountUpExample from './example/CountUp.vue'
 
 数字滚动组件。
 
-```vue
+## demo
+
+```js
 <count-up :start-val="start" :end-val="end" />
 ```
 <!-- markdownlint-disable-next-line -->

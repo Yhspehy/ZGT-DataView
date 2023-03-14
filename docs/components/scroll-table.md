@@ -1,5 +1,5 @@
 ---
-outline:deep
+outline: deep
 ---
 
 <!-- markdownlint-disable-next-line -->
@@ -11,7 +11,9 @@ import ScrollTable from '../../src/components/scroll-table/index.vue'
 
 自动滚动的table组件。
 
-```vue
+## demo
+
+```js
 <scroll-table
   style="height: 140px;"
   :header="[

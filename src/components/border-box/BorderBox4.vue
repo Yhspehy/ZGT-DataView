@@ -318,6 +318,8 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .borderBox4 {
+  height: 100%;
+  width: 100%;
   position: relative;
   padding: 60px 30px 30px;
   box-sizing: border-box;

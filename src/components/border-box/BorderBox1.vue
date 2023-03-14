@@ -62,8 +62,8 @@ const defaultColor = ['#4fd2dd', '#235fa7']
 
 <style lang="scss" scoped>
 .border-box-1 {
-  width: 100%;
   height: 100%;
+  width: 100%;
   box-sizing: border-box;
   position: relative;
 

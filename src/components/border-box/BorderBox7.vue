@@ -60,6 +60,8 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .borderBox7-ignore {
+  height: 100%;
+  width: 100%;
   position: relative;
   border-radius: 6px;
 

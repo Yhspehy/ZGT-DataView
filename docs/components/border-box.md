@@ -1,5 +1,5 @@
 ---
-outline:deep
+outline: deep
 ---
 
 # BorderBox
@@ -16,59 +16,71 @@ import {
   BorderBox5,
   BorderBox6,
   BorderBox7,
-  BorderBox8
+  BorderBox8,
+  BorderBox9
 } from '../../src/components/border-box'
 </script>
 
 ## BorderBox1
 
-```vue
-<BorderBox1 />
+```js
+<border-box1>
+  <div style="height: 200px;width: 100%;"></div>
+</border-box1>
 ```
+
 <!-- markdownlint-disable-next-line -->
-<div style="height: 200px;width: 100%;">
+<border-box1>
   <!-- markdownlint-disable-next-line -->
-  <BorderBox1 />
-</div>
+  <div style="height: 200px;width: 100%;"></div>
+</border-box1>
 
 ## BorderBox2
 
-```vue
-<BorderBox2 />
+borderBox2因为有外边框的距离，所以他的width和height取决于他的父容器，而不是子节点。
+
+```js
+<div style="height: 200px;width: 100%;">
+  <border-box2 />
+</div>
 ```
 
 <!-- markdownlint-disable-next-line -->
 <div style="height: 200px;width: 100%;">
   <!-- markdownlint-disable-next-line -->
-  <BorderBox2>
-  </BorderBox2>
+  <border-box2>
+  </border-box2>
 </div>
 
 ## BorderBox3
 
-```vue
-<BorderBox3 />
+```js
+<border-box3>
+  <div style="height: 200px;width: 100%;"></div>
+</border-box3>
 ```
 
 <!-- markdownlint-disable-next-line -->
-<BorderBox3>
+<border-box3>
   <!-- markdownlint-disable-next-line -->
   <div style="height: 200px;width: 100%;"></div>
-</BorderBox3>
+</border-box3>
 
 ## BorderBox4
 
-```vue
-<BorderBox4 title="title" :titleWidth="250"></BorderBox4>
+```js
+<border-box4 title="title" :titleWidth="250">
+  <div style="height: 200px;width: 100%;"></div>
+</border-box4>
 ```
 
 <!-- markdownlint-disable-next-line -->
-<BorderBox4 title="title" :titleWidth="250">
+<border-box4 title="title" :titleWidth="250">
   <!-- markdownlint-disable-next-line -->
   <div style="height: 200px;width: 100%;"></div>
-</BorderBox4>
+</border-box4>
 
-## BorderBox4 API
+### BorderBox4.API
 
 | 属性 | 说明 | 类型 | 默认值 | 版本 |
 |---|---|---|---|---|
@@ -77,55 +89,77 @@ import {
 
 ## BorderBox5
 
-```vue
-<BorderBox5></BorderBox5>
+```js
+<border-box5>
+  <div style="height: 200px;width: 100%;"></div>
+</border-box5>
 ```
 
 <!-- markdownlint-disable-next-line -->
-<BorderBox5>
+<border-box5>
   <!-- markdownlint-disable-next-line -->
   <div style="height: 200px;width: 100%;"></div>
-</BorderBox5>
+</border-box5>
 
 ## BorderBox6
 
-```vue
-<BorderBox6></BorderBox6>
+```js
+<border-box6 >
+  <div style="height: 200px;width: 100%;"></div>
+</border-box6>
 ```
 
 <!-- markdownlint-disable-next-line -->
-<BorderBox6 >
+<border-box6 >
   <!-- markdownlint-disable-next-line -->
   <div style="height: 200px;width: 100%;"></div>
-</BorderBox6>
+</border-box6>
 
 ## BorderBox7
 
-```vue
-<BorderBox7 ></BorderBox7>
+```js
+<border-box7 >
+  <div style="height: 200px;width: 100%;"></div>
+</border-box7>
 ```
 
 <!-- markdownlint-disable-next-line -->
-<BorderBox7 >
+<border-box7 >
   <!-- markdownlint-disable-next-line -->
   <div style="height: 200px;width: 100%;"></div>
-</BorderBox7>
+</border-box7>
 
 ## BorderBox8
 
-```vue
-<BorderBox8 ></BorderBox8>
+```js
+<border-box8 >
+  <div style="height: 200px;width: 100%;"></div>
+</border-box8>
 ```
 
 <!-- markdownlint-disable-next-line -->
-<BorderBox8 >
+<border-box8 >
   <!-- markdownlint-disable-next-line -->
   <div style="height: 200px;width: 100%;"></div>
-</BorderBox8>
+</border-box8>
 
-## BorderBox8 API
+### BorderBox8.API
 
 | 属性 | 说明 | 类型 | 默认值 | 版本 |
 |---|---|---|---|---|
 | `reverse` | 动画方向，默认顺时针 | boolean | false |  |
 | `duration` | 动画时间(s) | number | 3 |  |
+
+## BorderBox9
+
+```js
+<border-box9 >
+  <div style="height: 200px;width: 100%;"></div>
+</border-box9>
+```
+
+<!-- markdownlint-disable-next-line -->
+<border-box9 >
+  <!-- markdownlint-disable-next-line -->
+  <div style="height: 200px;width: 100%;"></div>
+</border-box9>

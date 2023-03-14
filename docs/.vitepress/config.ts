@@ -137,6 +137,14 @@ export default defineConfig({
             {
               text: 'BorderBox',
               link: '/components/border-box'
+            },
+            {
+              text: 'Decoration',
+              link: '/components/decoration'
+            },
+            {
+              text: 'CapsureTable',
+              link: '/components/capsure-table'
             }
           ]
         },
