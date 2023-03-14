@@ -15,6 +15,7 @@ import CountUp from '@/components/count-up/index.vue'
 import LeftChart from './Charts/Left.vue'
 import RightChart from './Charts/Right.vue'
 import LeftBarChart from './Charts/LeftBar.vue'
+import PortMap from './Charts/PortMap.vue'
 
 import { useResize } from '@/hooks/resize'
 
@@ -221,7 +222,10 @@ onUnmounted(() => {
     }"
     ref="containerRef"
   >
+    <!-- <port-map /> -->
+
     <div class="header">
+      <!-- <div class="left"> -->
       <div class="title">年度(TEU)</div>
       <CountUp :end-val="headerData.year" :decimalPlaces="2" class="value" />
       <div class="title">本月(TEU)</div>
@@ -232,6 +236,10 @@ onUnmounted(() => {
       <div class="title">当班(TEU)</div>
       <CountUp :end-val="headerData.now" class="value" />
       <div class="title">{{ headerData.date }}</div>
+      <!-- </div> -->
+      <!-- <div class="right">
+        <port-map />
+      </div> -->
     </div>
 
     <div class="boat-container">
@@ -331,8 +339,20 @@ onUnmounted(() => {
   height: 50px;
   margin-bottom: 10px;
 
+  .left {
+    @include flex-start-center;
+    flex-wrap: wrap;
+    width: 500px;
+  }
+
+  .right {
+    flex: 1;
+    height: 100%;
+  }
+
   .title {
     flex: 1;
+    // width: 50%;
     height: 100%;
     text-align: center;
     line-height: 50px;
@@ -341,6 +361,7 @@ onUnmounted(() => {
 
   .value {
     flex: 1;
+    // width: 50%;
     height: 100%;
     background-color: #485f98;
     text-align: center;
